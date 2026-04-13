@@ -257,7 +257,7 @@
   .cal-cell { vertical-align:top; padding:6px; border:1px solid var(--border); background:var(--bg-card); width:210px; min-width:210px; }
   .cal-cell.today { background:rgba(201,168,76,.04); border-color:var(--gold-dim); }
   .cal-tourn { border-radius:6px; padding:8px 10px; margin-bottom:6px; border-left:3px solid var(--purple-dim); background:rgba(153,102,204,.06); display:flex; flex-direction:column; gap:3px; }
-  .cal-tourn. { border-left-color:var(--gold-dim); background:rgba(201,168,76,.06); }
+  .cal-tourn.midnight { border-left-color:var(--gold-dim); background:rgba(201,168,76,.06); }
   .cal-tourn:last-child { margin-bottom:0; }
   .cal-time  { font-family:'Cinzel',serif; font-size:.78rem; font-weight:700; color:var(--text-main); letter-spacing:.07em; }
   .cal-tname { font-size:.95rem; line-height:1.3; }
@@ -793,7 +793,7 @@ function renderLatestGame() {
   }
 
   var g = LATEST_GAME;
-  var gameName = g.name || 'Midnight Grind';
+  var gameName = g.name || 'Midnight Grind Team Poker';
   var dateStr  = g.date ? new Date(g.date+'T12:00:00Z').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}) : '';
 
   bannerEl.innerHTML =
