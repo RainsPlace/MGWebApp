@@ -74,7 +74,8 @@
   .period-btn.active { background:rgba(201,168,76,.12); border-color:var(--gold); color:var(--gold-light); }
 
   /* ── STANDINGS ── */
-  .standings-section { padding:20px 16px 40px; }
+  .standings-section { padding:20px 16px 40px; display:flex; justify-content:center; }
+  .standings-inner { width:33.333%; min-width:320px; }
   .team-podium-wrap { display:flex; align-items:flex-end; justify-content:center; gap:10px; padding:24px 20px 18px; background:linear-gradient(180deg,#02030a,var(--bg-panel)); border:1px solid var(--border-gold); border-radius:8px 8px 0 0; }
   .team-podium-wrap + .standings-tbl-wrap { border-radius:0 0 8px 8px; }
   .pp { display:flex; flex-direction:column; align-items:center; gap:5px; flex:1; min-width:0; max-width:180px; }
@@ -116,12 +117,21 @@
   .empty-msg { text-align:center; padding:40px 16px; color:var(--text-muted); font-style:italic; font-size:.9rem; }
 
   /* ── PLAYERS ── */
-  .players-section { padding:0 0 40px; }
+  .players-section { padding:0 0 40px; display:flex; justify-content:center; }
+  .players-inner { width:33.333%; min-width:400px; }
   .player-controls { display:flex; align-items:center; gap:12px; padding:14px 18px; background:var(--bg-card); border-bottom:1px solid var(--border); flex-wrap:wrap; }
   .player-search { background:var(--bg-panel); color:var(--text-main); border:1px solid var(--border); border-radius:4px; padding:8px 14px; font-family:'Crimson Pro',serif; font-size:.95rem; outline:none; min-width:170px; max-width:240px; }
   .player-search:focus{border-color:var(--gold-dim)} .player-search::placeholder{color:var(--text-muted)}
   .pcnt { font-size:.85rem; color:var(--text-dim); font-style:italic; white-space:nowrap; }
-  .player-tbl-wrap { overflow-x:auto; overflow-y:auto; max-height:72vh; border:1px solid var(--border-gold); border-radius:0 0 6px 6px; margin:0 16px; }
+  .player-tbl-wrap { overflow-x:auto; overflow-y:auto; max-height:60vh; border:1px solid var(--border-gold); border-radius:0 0 6px 6px; }
+  /* ── PLAYER PODIUM (top 5) ── */
+  .pl-podium { display:flex; align-items:flex-end; justify-content:center; gap:6px; padding:20px 14px 0; background:linear-gradient(180deg,#02030a,var(--bg-panel)); border:1px solid var(--border-gold); border-radius:8px 8px 0 0; border-bottom:none; }
+  .pl-pp { display:flex; flex-direction:column; align-items:center; gap:3px; flex:1; min-width:0; }
+  .pl-pp-avatar { font-size:1.4rem; line-height:1.1; }
+  .pl-pp-name { font-family:'Cinzel',serif; font-size:.6rem; font-weight:700; text-align:center; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; width:100%; }
+  .pl-pp-pts  { font-size:.78rem; font-weight:700; font-variant-numeric:tabular-nums; }
+  .pl-pp-sub  { font-size:.56rem; color:var(--text-dim); }
+  .pl-pp-block { width:100%; border-radius:3px 3px 0 0; display:flex; align-items:center; justify-content:center; font-family:'Cinzel',serif; font-size:.72rem; font-weight:900; margin-top:4px; }
   .player-tbl { width:100%; border-collapse:collapse; font-size:.84rem; }
   .player-tbl thead { position:sticky; top:0; z-index:2; }
   .player-tbl thead tr { background:var(--bg-dark); }
@@ -143,20 +153,25 @@
 
   /* ── LEADERS ── */
   .leaders-section { padding:20px 16px 40px; }
-  .stat-cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:16px; }
+  .stat-cards-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  @media(max-width:900px){ .stat-cards-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:500px){ .stat-cards-grid{ grid-template-columns:1fr; } }
   .stat-card { background:var(--bg-card); border:1px solid var(--border-gold); border-radius:6px; overflow:hidden; display:flex; flex-direction:column; }
   .sc-head { background:var(--bg-dark); padding:10px 14px 8px; border-bottom:1px solid var(--border-gold); display:flex; align-items:baseline; gap:7px; }
   .sc-icon{font-size:.95rem}.sc-title{font-family:'Cinzel',serif;font-size:.78rem;font-weight:700;letter-spacing:.13em;color:var(--gold);text-transform:uppercase;flex:1}.sc-min{font-size:.68rem;color:var(--text-muted);font-style:italic}
-  .sc-body{max-height:260px;overflow-y:auto}.sc-tbl{width:100%;border-collapse:collapse}
+  .sc-body{overflow-y:auto}.sc-tbl{width:100%;border-collapse:collapse}
   .sc-row{border-bottom:1px solid var(--border)}.sc-row:last-child{border-bottom:none}.sc-row:hover{background:rgba(201,168,76,.04)}
   .sc-r1{background:rgba(201,168,76,.09)!important}.sc-r2{background:rgba(168,184,200,.05)!important}.sc-r3{background:rgba(196,122,69,.05)!important}
   .sc-rk{font-family:'Cinzel',serif;font-size:.78rem;font-weight:700;color:var(--text-muted);padding:5px 4px 5px 10px;width:26px;text-align:center}
   .sc-r1 .sc-rk{color:var(--gold)}.sc-r2 .sc-rk{color:var(--silver)}.sc-r3 .sc-rk{color:var(--bronze)}
-  .sc-name{padding:5px 4px;font-size:.88rem;color:var(--text-main);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:130px}
+  .sc-name{padding:5px 4px;font-size:.88rem;color:var(--text-main);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:160px}
   .sc-r1 .sc-name{color:var(--gold-light)}.sc-r2 .sc-name{color:var(--silver)}.sc-r3 .sc-name{color:var(--bronze)}
   .sc-val{padding:5px 10px 5px 2px;font-size:.88rem;font-weight:600;color:var(--text-main);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
   .sc-r1 .sc-val{color:var(--gold-light)}.sc-sub-val{display:block;font-size:.7rem;color:var(--text-dim);font-weight:400}
   .sc-dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle}
+  .sc-bar-cell{padding:0 10px 0 2px;width:35%}
+  .sc-bar-wrap{height:5px;background:var(--border);border-radius:3px;overflow:hidden}
+  .sc-bar{height:100%;border-radius:3px;transition:width .4s ease}
 
   /* ── LATEST GAME ── */
   .lg-section { padding:0 0 40px; }
@@ -261,8 +276,12 @@
   .cal-tourn:last-child { margin-bottom:0; }
   .cal-time  { font-family:'Cinzel',serif; font-size:.78rem; font-weight:700; color:var(--text-main); letter-spacing:.07em; }
   .cal-tname { font-size:.95rem; line-height:1.3; }
-  .cal-tname a { color:var(--text-main); text-decoration:none; transition:color .15s; }
-  .cal-tname a:hover { color:var(--gold-light); text-decoration:underline; }
+  .cal-tname a { color:var(--green); text-decoration:none; transition:color .15s; }
+  .cal-tname a:hover { color:#78d478; text-decoration:underline; }
+  .cal-link-label { font-family:'Cinzel',serif; font-size:.54rem; font-weight:700; letter-spacing:.08em; color:#4caf50; opacity:.75; margin-left:5px; vertical-align:middle; white-space:nowrap; }
+  .cal-lobby-link { margin-top:6px; padding-top:5px; border-top:1px solid var(--border); text-align:center; }
+  .cal-lobby-link a { font-family:'Cinzel',serif; font-size:.62rem; font-weight:700; letter-spacing:.12em; color:var(--blue-light); text-decoration:none; transition:color .15s; }
+  .cal-lobby-link a:hover { color:var(--gold-light); }
   .cal-tgame   { font-size:.88rem; color:var(--text-main); font-weight:600; }
   .cal-tstatus { display:inline-block; font-family:'Cinzel',serif; font-size:.54rem; font-weight:700; letter-spacing:.05em; padding:2px 7px; border-radius:8px; margin-top:2px; }
   .st-running     { background:rgba(76,175,80,.2);  color:#78d478; border:1px solid #2a6a2a; }
@@ -351,18 +370,20 @@
 <!-- ══ STANDINGS SECTION ══ -->
 <div id="section-standings" style="display:none">
   <div class="standings-section">
-    <div class="team-podium-wrap" id="teamPodium"></div>
-    <div class="standings-tbl-wrap">
-      <table id="tblStandings">
-        <thead><tr>
-          <th class="r" style="width:50px">Rk</th>
-          <th>Team</th>
-          <th class="r">Points</th>
-          <th class="r">Games</th>
-          <th class="bar-cell"></th>
-        </tr></thead>
-        <tbody></tbody>
-      </table>
+    <div class="standings-inner">
+      <div class="team-podium-wrap" id="teamPodium"></div>
+      <div class="standings-tbl-wrap">
+        <table id="tblStandings">
+          <thead><tr>
+            <th class="r" style="width:50px">Rk</th>
+            <th>Team</th>
+            <th class="r">Points</th>
+            <th class="r">Games</th>
+            <th class="bar-cell"></th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
@@ -370,22 +391,25 @@
 <!-- ══ PLAYERS SECTION ══ -->
 <div id="section-players" style="display:none">
   <div class="players-section">
-    <div class="player-controls">
-      <input type="text" class="player-search" id="playerSearch" placeholder="Search player or team…" oninput="renderPlayersTable()">
-      <span class="pcnt" id="playerCnt"></span>
-    </div>
-    <div class="player-tbl-wrap">
-      <table class="player-tbl" id="tblPlayers">
-        <thead><tr>
-          <th class="left" data-psort="rank" style="width:44px">Rk<span class="sa">↑</span></th>
-          <th class="left" data-psort="player">Player<span class="sa"></span></th>
-          <th data-psort="points">Points<span class="sa"></span></th>
-          <th data-psort="games" title="Games Played">Played<span class="sa"></span></th>
-          <th data-psort="wins"  title="Games Won">Wins<span class="sa"></span></th>
-          <th data-psort="chips">Chips<span class="sa"></span></th>
-        </tr></thead>
-        <tbody id="playersTbody"></tbody>
-      </table>
+    <div class="players-inner">
+      <div class="pl-podium" id="playerPodium"></div>
+      <div class="player-controls">
+        <input type="text" class="player-search" id="playerSearch" placeholder="Search player or team…" oninput="renderPlayersTable()">
+        <span class="pcnt" id="playerCnt"></span>
+      </div>
+      <div class="player-tbl-wrap">
+        <table class="player-tbl" id="tblPlayers">
+          <thead><tr>
+            <th class="left" data-psort="rank" style="width:44px">Rk<span class="sa">↑</span></th>
+            <th class="left" data-psort="player">Player<span class="sa"></span></th>
+            <th data-psort="points">Points<span class="sa"></span></th>
+            <th data-psort="games" title="Games Played">Played<span class="sa"></span></th>
+            <th data-psort="wins"  title="Games Won">Wins<span class="sa"></span></th>
+            <th data-psort="chips">Chips<span class="sa"></span></th>
+          </tr></thead>
+          <tbody id="playersTbody"></tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
@@ -671,6 +695,32 @@ function renderPlayersTable() {
   var raw   = (DATA[q] && DATA[q].players) ? DATA[q].players : [];
   var rows  = raw.slice();
 
+  // ── Top-5 Points Podium ──
+  var podiumEl = document.getElementById('playerPodium');
+  var top5 = raw.slice().sort(function(a,b){ return (b.points||0)-(a.points||0); }).slice(0,5);
+  var podiumMedals = [
+    { border:'var(--gold)',   bg:'rgba(201,168,76,.18)',  txt:'var(--gold)',     h:'48px' },
+    { border:'var(--silver)', bg:'rgba(168,184,200,.12)', txt:'var(--silver)',   h:'34px' },
+    { border:'var(--bronze)', bg:'rgba(196,122,69,.12)',  txt:'var(--bronze)',   h:'24px' },
+    { border:'#3a4870',       bg:'rgba(58,72,112,.10)',   txt:'var(--text-dim)', h:'16px' },
+    { border:'#2a3050',       bg:'rgba(40,48,80,.08)',    txt:'var(--text-muted)','h':'10px' }
+  ];
+  // Display order: 4th, 2nd, 1st, 3rd, 5th
+  var order = [3,1,0,2,4];
+  podiumEl.innerHTML = order.map(function(i) {
+    var p = top5[i]; if (!p) return '';
+    var m = podiumMedals[i];
+    var clr = p.teamColor || m.txt;
+    var medals5 = ['🥇','🥈','🥉','④','⑤'];
+    return '<div class="pl-pp">'+
+      '<div class="pl-pp-avatar">'+medals5[i]+'</div>'+
+      '<div class="pl-pp-name" style="color:'+esc(clr)+'">'+esc(p.player)+'</div>'+
+      '<div class="pl-pp-pts" style="color:'+esc(clr)+'">'+n(p.points)+'</div>'+
+      '<div class="pl-pp-sub">'+p.games+'G · '+(p.wins||0)+'W</div>'+
+      '<div class="pl-pp-block" style="height:'+m.h+';background:'+esc(m.bg)+';border:1px solid '+esc(m.border)+';color:'+esc(m.txt)+'">'+(i+1)+'</div>'+
+    '</div>';
+  }).join('');
+
   if (pSearch) rows = rows.filter(function(r){
     return (r.player||'').toLowerCase().indexOf(pSearch) !== -1 ||
            (r.team||'').toLowerCase().indexOf(pSearch) !== -1;
@@ -760,17 +810,27 @@ function renderLeaders() {
     data.sort(function(a,b){
       var va=a[cfg.key], vb=b[cfg.key];
       if (va===null||va===undefined) return 1; if (vb===null||vb===undefined) return -1;
-      // avgFinish: lower is better
       return cfg.key==='avgFinish' ? va-vb : vb-va;
     });
-    var top = data.slice(0,12);
+
+    // Scale bars to the top-5 max value so the top 5 are visually prominent
+    var top5vals = data.slice(0,5).map(function(r){ return r[cfg.key]||0; });
+    var scaleMax = top5vals.length ? Math.max.apply(null, top5vals) : 1;
+    if (!scaleMax) scaleMax = 1;
+
     var minNote = cfg.filter ? '(min '+minG+'g)' : '';
-    var rowsHtml = top.map(function(r, idx){
+    var rowsHtml = data.map(function(r, idx){
       var rk=idx+1, rc=rk<=3?'sc-r'+rk:'';
       var rl=rk<=3?['🥇','🥈','🥉'][rk-1]:rk;
       var dot = r.teamColor ? '<span class="sc-dot" style="background:'+esc(r.teamColor)+'"></span>' : '';
       var sub = cfg.sub ? '<span class="sc-sub-val">'+cfg.sub(r)+'</span>' : '';
-      return '<tr class="sc-row '+rc+'"><td class="sc-rk">'+rl+'</td><td class="sc-name">'+dot+esc(r.player)+'</td><td class="sc-val">'+cfg.val(r)+sub+'</td></tr>';
+      var rawVal = r[cfg.key];
+      var barPct = (rawVal !== null && rawVal !== undefined && scaleMax)
+        ? Math.min(100, Math.round((rawVal / scaleMax) * 100))
+        : 0;
+      var barColor = r.teamColor || 'var(--gold-dim)';
+      var barHtml = '<td class="sc-bar-cell"><div class="sc-bar-wrap"><div class="sc-bar" style="width:'+barPct+'%;background:'+barColor+'"></div></div></td>';
+      return '<tr class="sc-row '+rc+'"><td class="sc-rk">'+rl+'</td><td class="sc-name">'+dot+esc(r.player)+'</td>'+barHtml+'<td class="sc-val">'+cfg.val(r)+sub+'</td></tr>';
     }).join('');
     grid.innerHTML += '<div class="stat-card"><div class="sc-head"><span class="sc-icon">'+cfg.icon+'</span><span class="sc-title">'+cfg.title+'</span><span class="sc-min">'+minNote+'</span></div><div class="sc-body"><table class="sc-tbl"><tbody>'+rowsHtml+'</tbody></table></div></div>';
   });
@@ -987,13 +1047,16 @@ function renderCalTab() {
                        (t.name||'').toLowerCase().indexOf('sunday')   === -1;
       h += '<div class="cal-tourn'+(fin?' finished':'')+(isMidnight?' midnight':'')+'">' +
              '<div class="cal-time">'+ esc(tm) +'</div>' +
-             '<div class="cal-tname">' + (t.link ? '<a href="'+esc(t.link)+'" target="_blank">'+esc(t.name)+'</a>' : esc(t.name)) +
+             '<div class="cal-tname">' + (t.link
+               ? '<a href="'+esc(t.link)+'" target="_blank">'+esc(t.name)+'<span class="cal-link-label">↗ Link to Game</span></a>'
+               : esc(t.name)) +
                (isMidnight ? '<span class="cal-special-badge">MONTHLY</span>' : '') +
              '</div>' +
              (t.game ? '<div class="cal-tgame">'+esc(t.game)+'</div>' : '') +
              '<span class="cal-tstatus '+stClass(status)+'">'+esc(status)+'</span>' +
            '</div>';
     });
+    h += '<div class="cal-lobby-link"><a href="https://www.casino.org/replaypoker/leagues/77" target="_blank">🎰 Leagues Invitational Lobby</a></div>';
     h += '</td>';
   });
   h += '</tr></tbody></table>';
