@@ -1072,7 +1072,17 @@ document.getElementById('refreshBtn').addEventListener('click', function(){ load
 document.getElementById('quarterSelect').addEventListener('change', renderAll);
 
 // ── START ─────────────────────────────────────────────────────
-loadData(false);
+loadData();
+
+// Add the counter safely after the app loads
+window.addEventListener('load', function() {
+  var counterDiv = document.createElement('div');
+  counterDiv.style.textAlign = 'center';
+  counterDiv.style.marginTop = '20px';
+  counterDiv.style.marginBottom = '20px';
+  counterDiv.innerHTML = '<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Frainsplace.github.io%2Fleague-schedules&count_bg=%234CAF50&title_bg=%23333333&icon=dataexplorer.svg&icon_color=%23FFFFFF&title=Visits&edge_flat=true" alt="App Visits"/>';
+  document.body.appendChild(counterDiv);
+});
 </script>
 </body>
 </html>
