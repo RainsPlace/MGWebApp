@@ -1066,7 +1066,7 @@ function renderCalTab() {
   var todayHdr = el.querySelector('.cal-date-hdr.today');
   if (todayHdr) setTimeout(function(){ todayHdr.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}); }, 80);
 }
- 
+
 // ── EVENTS ────────────────────────────────────────────────────
 document.getElementById('refreshBtn').addEventListener('click', function(){ loadData(true); });
 document.getElementById('quarterSelect').addEventListener('change', renderAll);
