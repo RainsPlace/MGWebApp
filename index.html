@@ -75,7 +75,7 @@
 
   /* ── STANDINGS ── */
   .standings-section { padding:20px 16px 40px; display:flex; justify-content:center; }
-  .standings-inner { width:33.333%; min-width:320px; }
+  .standings-inner { width:50%; min-width:480px; }
   .team-podium-wrap { display:flex; align-items:flex-end; justify-content:center; gap:10px; padding:24px 20px 18px; background:linear-gradient(180deg,#02030a,var(--bg-panel)); border:1px solid var(--border-gold); border-radius:8px 8px 0 0; }
   .team-podium-wrap + .standings-tbl-wrap { border-radius:0 0 8px 8px; }
   .pp { display:flex; flex-direction:column; align-items:center; gap:5px; flex:1; min-width:0; max-width:180px; }
@@ -521,9 +521,9 @@ var TEAM_ICONS = { 'Midnight Maniacs':'🔥', 'Midnight Rollers':'🎲', 'Midnig
 function teamIcon(name) { return TEAM_ICONS[name] || ''; }
 
 var TEAM_META = {
-  'Midnight Maniacs': { color:'#e05060', abbr:'MAN', avatar:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightMananiacs2.jpg' },
+  'Midnight Maniacs': { color:'#e07830', abbr:'MAN', avatar:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightMananiacs2.jpg' },
   'Midnight Rollers': { color:'#4a8fc4', abbr:'ROL', avatar:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightRollers7.jpg' },
-  'Midnight Riders':  { color:'#50c878', abbr:'RID', avatar:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightRidersWoman2.jpg' },
+  'Midnight Riders':  { color:'#e05060', abbr:'RID', avatar:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightRidersWoman2.jpg' },
   'Midnight Masters': { color:'#c9a84c', abbr:'MAS', avatar:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightMasters1.jpg' }
 };
 function teamAvatar(name, size) {
