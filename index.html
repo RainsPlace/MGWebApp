@@ -743,12 +743,11 @@ function buildTeamPodium(teams) {
     var clr  = team.color || m.txt;
     var meta = TEAM_META[team.team];
     var avatarHtml = meta
-      ? '<img src="'+esc(meta.avatar)+'" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid '+esc(m.border)+';box-shadow:0 0 12px '+esc(m.border)+'44" alt="'+esc(team.team)+'">'
+      ? '<img src="'+esc(meta.avatar)+'" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid '+esc(m.border)+';box-shadow:0 0 16px '+esc(m.border)+'66" alt="'+esc(team.team)+'">'
       : '<div style="font-size:3.3rem;line-height:1.1">'+esc(teamIcon(team.team))+'</div>';
     var sName = (team.team||'').replace('Midnight ','');
     return '<div class="pp">'+
       avatarHtml+
-      '<div class="pp-badge" style="border-color:'+esc(m.border)+';background:'+esc(m.bg)+';color:'+esc(clr)+'">'+esc(abbr)+'</div>'+
       '<div class="pp-name" style="color:'+esc(clr)+'">'+esc(sName)+'</div>'+
       '<div class="pp-pts">'+n(team.points)+'</div>'+
       '<div class="pp-sub">'+n(team.games)+' games</div>'+
@@ -966,11 +965,10 @@ function renderLatestGame() {
           var sName = team.team.replace('Midnight ','');
           var tMeta = TEAM_META[team.team];
           var avHtml = tMeta
-            ? '<img src="'+esc(tMeta.avatar)+'" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid '+esc(m.border)+';box-shadow:0 0 14px '+esc(m.border)+'44" alt="'+esc(team.team)+'">'
+            ? '<img src="'+esc(tMeta.avatar)+'" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid '+esc(m.border)+';box-shadow:0 0 16px '+esc(m.border)+'66" alt="'+esc(team.team)+'">'
             : '<div style="font-size:4.8rem;line-height:1.1">'+esc(teamIcon(team.team))+'</div>';
           return '<div class="pp">'+
             avHtml+
-            '<div class="pp-badge" style="border-color:'+esc(m.border)+';background:'+esc(m.bg)+';color:'+esc(clr)+'">'+esc(abbr)+'</div>'+
             '<div class="pp-name" style="color:'+esc(clr)+'">'+esc(sName)+'</div>'+
             '<div class="pp-pts">'+n(team.points)+'</div>'+
             '<div class="pp-sub">game pts</div>'+
