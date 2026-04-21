@@ -292,6 +292,20 @@
   .cal-tourn.finished { opacity:.55; border-left-color:var(--text-muted) !important; background:rgba(40,50,70,.1) !important; }
   .cal-special-badge { display:inline-block; font-family:'Cinzel',serif; font-size:.5rem; font-weight:700; letter-spacing:.1em; background:rgba(201,168,76,.15); color:var(--gold-light); border:1px solid var(--gold-dim); border-radius:8px; padding:1px 6px; margin-left:4px; vertical-align:middle; }
 
+  /* ── MEMBERS ── */
+  .members-section { padding:24px 20px 48px; }
+  .members-grid { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
+  .team-card { display:flex; flex-direction:column; align-items:center; background:var(--bg-card); border:1px solid var(--border-gold); border-radius:8px; overflow:hidden; width:220px; flex-shrink:0; }
+  .team-card-img { width:100%; height:220px; object-fit:cover; display:block; }
+  .team-card-name { font-family:'Cinzel',serif; font-size:.95rem; font-weight:900; letter-spacing:.2em; text-transform:uppercase; padding:10px 16px 9px; text-align:center; width:100%; }
+  .team-card-divider { width:100%; height:3px; display:block; }
+  .team-member-list { width:100%; display:flex; flex-direction:column; padding:4px 0 10px; }
+  .team-member-link { display:block; text-align:center; padding:4px 14px; font-size:.93rem; color:var(--text-main); text-decoration:none; transition:background .1s,color .15s; }
+  .team-member-link:hover { background:rgba(201,168,76,.07); color:var(--gold-light); }
+
+  /* ── PLAYER TEAM ICON ── */
+  .player-team-icon { width:1em; height:1em; border-radius:50%; vertical-align:middle; margin-right:5px; object-fit:cover; flex-shrink:0; }
+
   /* ── FOOTER ── */
   footer { text-align:center; padding:20px; color:var(--text-muted); font-size:.78rem; letter-spacing:.05em; border-top:1px solid var(--border); }
   .fr { color:var(--gold-dim); letter-spacing:.4em; display:block; margin-bottom:6px; }
@@ -351,6 +365,7 @@
   <button class="tab-btn"        id="tab-leaders"   onclick="switchTab('leaders')">★ LEADERS</button>
   <button class="tab-btn active" id="tab-latest"    onclick="switchTab('latest')">🌙 LATEST GAME</button>
   <button class="tab-btn"        id="tab-calendar"  onclick="switchTab('calendar')">📅 CALENDAR</button>
+  <button class="tab-btn"        id="tab-members"   onclick="switchTab('members')">👥 MEMBERS</button>
 </div>
 
 <!-- CONTROLS (standings + players) -->
@@ -458,6 +473,13 @@
   </div>
 </div>
 
+<!-- ══ MEMBERS SECTION ══ -->
+<div id="section-members" style="display:none">
+  <div class="members-section">
+    <div class="members-grid" id="membersGrid"></div>
+  </div>
+</div>
+
 <footer>
   <span class="fr">✦ ♠ ♥ ♦ ♣ ✦</span>
   Midnight Grind &nbsp;·&nbsp; Leagues Invitational &nbsp;·&nbsp; Live data from Google Sheets
@@ -481,6 +503,26 @@ var OUTPUT_DATA = null;
 var TOURNAMENTS = [];
 var TEAM_ICONS = { 'Midnight Maniacs':'🔥', 'Midnight Rollers':'🎲', 'Midnight Riders':'🏍️', 'Midnight Masters':'🦁' };
 function teamIcon(name) { return TEAM_ICONS[name] || ''; }
+
+var TEAM_META = {
+  'Midnight Maniacs': { color:'#e05060', abbr:'MAN', avatar:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightMananiacs2.jpg' },
+  'Midnight Rollers': { color:'#4a8fc4', abbr:'ROL', avatar:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightRollers7.jpg' },
+  'Midnight Riders':  { color:'#50c878', abbr:'RID', avatar:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightRidersWoman2.jpg' },
+  'Midnight Masters': { color:'#c9a84c', abbr:'MAS', avatar:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightMasters1.jpg' }
+};
+function teamAvatar(name, size) {
+  var meta = TEAM_META[name];
+  if (!meta) return '';
+  var sz = size || '70px';
+  return '<img src="'+esc(meta.avatar)+'" style="width:'+sz+';height:'+sz+';border-radius:50%;object-fit:cover;" alt="'+esc(name)+'">';
+}
+function playerIcon(teamName) {
+  var meta = TEAM_META[teamName];
+  if (!meta) return '';
+  return '<img class="player-team-icon" src="'+esc(meta.avatar)+'" alt="'+esc(teamName)+'">';
+}
+
+var MEMBERS = {};
 
 var activeTab    = 'latest';
 var activePeriod = 'Overall';
@@ -555,6 +597,7 @@ function applyData(json) {
   LATEST_GAME = json.latestGame  || null;
   OUTPUT_DATA = json.output      || null;
   TOURNAMENTS = json.tournaments || [];
+  MEMBERS     = json.members     || {};
 
   // Quarter dropdown — auto-advance to newest quarter if it changed
   var qSel      = document.getElementById('quarterSelect');
@@ -594,7 +637,7 @@ function showError(msg) {
 // ── TAB SWITCHING ─────────────────────────────────────────────
 function switchTab(tab) {
   activeTab = tab;
-  ['standings','players','leaders','latest','calendar'].forEach(function(t) {
+  ['standings','players','leaders','latest','calendar','members'].forEach(function(t) {
     document.getElementById('tab-'+t).classList.toggle('active', t === tab);
     document.getElementById('section-'+t).style.display = (t === tab) ? '' : 'none';
   });
@@ -605,6 +648,7 @@ function switchTab(tab) {
   if (tab === 'leaders')   renderLeaders();
   if (tab === 'latest')    renderLatestGame();
   if (tab === 'calendar')  renderCalTab();
+  if (tab === 'members')   renderMembers();
 }
 
 // ── PERIOD BAR ────────────────────────────────────────────────
@@ -631,6 +675,28 @@ function renderAll() {
   if (activeTab === 'players')   renderPlayersTable();
   if (activeTab === 'leaders')   renderLeaders();
   if (activeTab === 'latest')    renderLatestGame();
+  if (activeTab === 'members')   renderMembers();
+}
+
+// ── MEMBERS ───────────────────────────────────────────────────
+function renderMembers() {
+  var el = document.getElementById('membersGrid');
+  if (!el) return;
+  var teamOrder = ['Midnight Maniacs','Midnight Rollers','Midnight Riders','Midnight Masters'];
+  el.innerHTML = teamOrder.map(function(teamName) {
+    var meta      = TEAM_META[teamName] || { color:'#888', avatar:'' };
+    var shortName = teamName.replace('Midnight ','');
+    var members   = MEMBERS[teamName] || [];
+    var memberLinks = members.map(function(name) {
+      return '<a class="team-member-link" href="https://www.casino.org/replaypoker/profile/'+encodeURIComponent(name)+'" target="_blank">'+esc(name)+'</a>';
+    }).join('');
+    return '<div class="team-card">'+
+      '<img class="team-card-img" src="'+esc(meta.avatar)+'" alt="'+esc(shortName)+'">'+
+      '<div class="team-card-name" style="color:'+esc(meta.color)+'">'+esc(shortName)+'</div>'+
+      '<div class="team-card-divider" style="background:'+esc(meta.color)+'"></div>'+
+      '<div class="team-member-list">'+(memberLinks||'<span style="color:var(--text-muted);font-style:italic;padding:8px;display:block;text-align:center">No members listed</span>')+'</div>'+
+    '</div>';
+  }).join('');
 }
 
 // ── STANDINGS ─────────────────────────────────────────────────
@@ -673,14 +739,17 @@ function buildTeamPodium(teams) {
   ];
   el.innerHTML = teams.slice(0,4).map(function(team, idx) {
     var m    = medals[idx];
-    var icon  = teamIcon(team.team);
-    var crown = icon || (idx===0?'🌙':idx===1?'🥈':idx===2?'🥉':'');
-    var abbr  = team.abbr || (team.team||'?').substring(0,3).toUpperCase();
-    var clr   = team.color || m.txt;
+    var abbr = team.abbr || (team.team||'?').substring(0,3).toUpperCase();
+    var clr  = team.color || m.txt;
+    var meta = TEAM_META[team.team];
+    var avatarHtml = meta
+      ? '<img src="'+esc(meta.avatar)+'" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid '+esc(m.border)+';box-shadow:0 0 12px '+esc(m.border)+'44" alt="'+esc(team.team)+'">'
+      : '<div style="font-size:3.3rem;line-height:1.1">'+esc(teamIcon(team.team))+'</div>';
+    var sName = (team.team||'').replace('Midnight ','');
     return '<div class="pp">'+
-      '<div style="font-size:3.3rem;line-height:1.1">'+crown+'</div>'+
+      avatarHtml+
       '<div class="pp-badge" style="border-color:'+esc(m.border)+';background:'+esc(m.bg)+';color:'+esc(clr)+'">'+esc(abbr)+'</div>'+
-      '<div class="pp-name" style="color:'+esc(clr)+'">'+esc(team.team)+'</div>'+
+      '<div class="pp-name" style="color:'+esc(clr)+'">'+esc(sName)+'</div>'+
       '<div class="pp-pts">'+n(team.points)+'</div>'+
       '<div class="pp-sub">'+n(team.games)+' games</div>'+
       '<div class="pp-block" style="height:'+m.h+';background:'+m.blk+';color:'+esc(clr)+'">'+team.rank+'</div>'+
@@ -759,7 +828,7 @@ function renderPlayersTable() {
     var bg  = clr + '22';
     return '<tr class="'+rc+'">'+
       '<td class="left rc">'+rl+'</td>'+
-      '<td class="left player-name">'+esc(r.player)+
+      '<td class="left player-name">'+playerIcon(r.team)+esc(r.player)+
         '<span class="team-badge" style="color:'+esc(clr)+';background:'+bg+'">'+esc(r.teamAbbr||r.team||'')+'</span>'+
       '</td>'+
       '<td class="pts-total">'+n(r.points)+'</td>'+
@@ -822,7 +891,6 @@ function renderLeaders() {
     var rowsHtml = data.map(function(r, idx){
       var rk=idx+1, rc=rk<=3?'sc-r'+rk:'';
       var rl=rk<=3?['🥇','🥈','🥉'][rk-1]:rk;
-      var dot = r.teamColor ? '<span class="sc-dot" style="background:'+esc(r.teamColor)+'"></span>' : '';
       var sub = cfg.sub ? '<span class="sc-sub-val">'+cfg.sub(r)+'</span>' : '';
       var rawVal = r[cfg.key];
       var barPct = (rawVal !== null && rawVal !== undefined && scaleMax)
@@ -830,7 +898,7 @@ function renderLeaders() {
         : 0;
       var barColor = r.teamColor || 'var(--gold-dim)';
       var barHtml = '<td class="sc-bar-cell"><div class="sc-bar-wrap"><div class="sc-bar" style="width:'+barPct+'%;background:'+barColor+'"></div></div></td>';
-      return '<tr class="sc-row '+rc+'"><td class="sc-rk">'+rl+'</td><td class="sc-name">'+dot+esc(r.player)+'</td>'+barHtml+'<td class="sc-val">'+cfg.val(r)+sub+'</td></tr>';
+      return '<tr class="sc-row '+rc+'"><td class="sc-rk">'+rl+'</td><td class="sc-name">'+playerIcon(r.team)+esc(r.player)+'</td>'+barHtml+'<td class="sc-val">'+cfg.val(r)+sub+'</td></tr>';
     }).join('');
     grid.innerHTML += '<div class="stat-card"><div class="sc-head"><span class="sc-icon">'+cfg.icon+'</span><span class="sc-title">'+cfg.title+'</span><span class="sc-min">'+minNote+'</span></div><div class="sc-body"><table class="sc-tbl"><tbody>'+rowsHtml+'</tbody></table></div></div>';
   });
@@ -865,14 +933,17 @@ function renderLatestGame() {
 
   if (ts.length) {
     // ── Winner announcement card ──
-    var winner = ts[0];
-    var wIcon  = teamIcon(winner.team);
-    var wShort = winner.team.replace('Midnight ','');
+    var winner     = ts[0];
+    var wShort     = winner.team.replace('Midnight ','');
+    var wMeta      = TEAM_META[winner.team];
+    var wAvatarHtml = wMeta
+      ? '<img src="'+esc(wMeta.avatar)+'" style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);box-shadow:0 0 20px rgba(201,168,76,.4)" alt="'+esc(winner.team)+'">'
+      : '<span class="lg-winner-icon" style="font-size:4.8rem">'+esc(teamIcon(winner.team))+'</span>';
     winnerEl.innerHTML =
       '<div class="lg-winner-wrap">'+
         '<div class="lg-winner-card">'+
           '<span class="lg-winner-label">🏆 &nbsp; Game Winner &nbsp; 🏆</span>'+
-          '<span class="lg-winner-icon" style="font-size:4.8rem">'+wIcon+'</span>'+
+          wAvatarHtml+
           '<div class="lg-winner-name">'+esc(wShort)+'</div>'+
           '<div class="lg-winner-pts">'+n(winner.points)+' pts</div>'+
         '</div>'+
@@ -889,13 +960,16 @@ function renderLatestGame() {
       '<div class="lg-podium-section">'+
         '<div class="team-podium-wrap">'+
         ts.slice(0,4).map(function(team, idx) {
-          var m    = medals[idx];
-          var icon = teamIcon(team.team);
-          var abbr = team.abbr || (team.team||'').substring(0,3).toUpperCase();
-          var clr  = team.color || m.txt;
+          var m     = medals[idx];
+          var abbr  = team.abbr || (team.team||'').substring(0,3).toUpperCase();
+          var clr   = team.color || m.txt;
           var sName = team.team.replace('Midnight ','');
+          var tMeta = TEAM_META[team.team];
+          var avHtml = tMeta
+            ? '<img src="'+esc(tMeta.avatar)+'" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid '+esc(m.border)+';box-shadow:0 0 14px '+esc(m.border)+'44" alt="'+esc(team.team)+'">'
+            : '<div style="font-size:4.8rem;line-height:1.1">'+esc(teamIcon(team.team))+'</div>';
           return '<div class="pp">'+
-            '<div style="font-size:4.8rem;line-height:1.1">'+icon+'</div>'+
+            avHtml+
             '<div class="pp-badge" style="border-color:'+esc(m.border)+';background:'+esc(m.bg)+';color:'+esc(clr)+'">'+esc(abbr)+'</div>'+
             '<div class="pp-name" style="color:'+esc(clr)+'">'+esc(sName)+'</div>'+
             '<div class="pp-pts">'+n(team.points)+'</div>'+
@@ -916,7 +990,7 @@ function renderLatestGame() {
       var clr=p.teamColor||'#888';
       return '<tr class="'+rc+'">'+
         '<td class="lft rc">'+rl+'</td>'+
-        '<td class="lft" style="color:var(--text-main)">'+esc(p.player)+'</td>'+
+        '<td class="lft" style="color:var(--text-main)">'+playerIcon(p.team)+esc(p.player)+'</td>'+
         '<td class="lft"><span class="tc" style="background:'+esc(clr)+'"></span>'+
           '<span style="color:'+esc(clr)+';font-size:.82rem">'+esc(p.team||'')+'</span></td>'+
         '<td class="val">'+n(p.points)+'</td>'+
@@ -1074,8 +1148,5 @@ document.getElementById('quarterSelect').addEventListener('change', renderAll);
 // ── START ─────────────────────────────────────────────────────
 loadData(false);
 </script>
-    <div style="text-align: center; margin-top: 30px; padding-bottom: 30px;">
-  <img src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Frainsplace.github.io%2FMGWebApp%2F&label=Visits&icon=cloud-drizzle&color=%23198754&message=&style=flat&tz=US%2FEastern" alt="App Visits">
-</div>
 </body>
 </html>
