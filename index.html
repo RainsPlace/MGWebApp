@@ -45,17 +45,17 @@
   header h2 { font-family:'Cinzel',serif; font-size:clamp(.7rem,2vw,.9rem); font-weight:400; letter-spacing:.28em; color:var(--text-dim); margin-top:8px; }
   .header-ornament { font-size:1rem; color:var(--gold-dim); letter-spacing:.4em; margin:10px 0 0; }
   .header-actions { display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:8px; }
-  .live-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(201,168,76,.08); border:1px solid var(--border-gold); border-radius:20px; padding:4px 14px; font-family:'Cinzel',serif; font-size:.63rem; letter-spacing:.2em; color:var(--gold-dim); }
-  .live-dot { width:6px; height:6px; border-radius:50%; background:var(--green); box-shadow:0 0 6px var(--green); animation:pulse 2s ease-in-out infinite; }
+  .live-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,168,76,.08); border:1px solid var(--border-gold); border-radius:20px; padding:6px 20px; font-family:'Cinzel',serif; font-size:.95rem; letter-spacing:.2em; color:var(--gold-dim); }
+  .live-dot { width:9px; height:9px; border-radius:50%; background:var(--green); box-shadow:0 0 8px var(--green); animation:pulse 2s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
   .updated-time { font-size:.7rem; color:var(--text-muted); margin-top:5px; font-style:italic; }
-  .refresh-btn { background:transparent; color:var(--text-dim); border:1px solid var(--border); border-radius:4px; padding:7px 14px; font-family:'Cinzel',serif; font-size:.66rem; font-weight:700; letter-spacing:.12em; cursor:pointer; transition:all .2s; display:inline-flex; align-items:center; gap:5px; }
+  .refresh-btn { background:transparent; color:var(--text-dim); border:1px solid var(--border); border-radius:4px; padding:10px 20px; font-family:'Cinzel',serif; font-size:1rem; font-weight:700; letter-spacing:.12em; cursor:pointer; transition:all .2s; display:inline-flex; align-items:center; gap:7px; }
   .refresh-btn:hover { color:var(--gold); border-color:var(--gold-dim); }
   .refresh-btn.spinning .ri { animation:spin .6s linear infinite; display:inline-block; }
 
   /* ── TAB NAV ── */
-  .tab-nav { display:flex; background:var(--bg-dark); border-bottom:2px solid var(--border-gold); overflow-x:auto; padding:10px 16px; gap:8px; align-items:center; }
-  .tab-btn { font-family:'Cinzel',serif; font-size:.92rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; padding:10px 24px; cursor:pointer; border:1px solid var(--border); border-radius:999px; background:var(--bg-panel); color:var(--text-dim); transition:all .2s; white-space:nowrap; }
+  .tab-nav { display:grid; grid-template-columns:repeat(3,1fr); background:var(--bg-dark); border-bottom:2px solid var(--border-gold); padding:10px 12px; gap:6px; }
+  .tab-btn { font-family:'Cinzel',serif; font-size:.92rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; padding:10px 8px; cursor:pointer; border:1px solid var(--border); border-radius:999px; background:var(--bg-panel); color:var(--text-dim); transition:all .2s; white-space:nowrap; text-align:center; width:100%; }
   .tab-btn:hover { color:var(--gold-light); border-color:var(--gold-dim); background:rgba(201,168,76,.08); }
   .tab-btn.active { color:var(--gold); border-color:var(--gold); background:rgba(201,168,76,.13); box-shadow:0 0 14px rgba(201,168,76,.22),inset 0 0 0 1px rgba(201,168,76,.18); }
 
@@ -323,7 +323,210 @@
   }
 
   @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ── THEME + SCREENSHOT BUTTONS ── */
+  .hdr-theme { display:inline-flex; align-items:center; gap:7px; background:transparent; color:var(--text-dim); border:1px solid var(--border); border-radius:4px; padding:10px 20px; font-family:'Cinzel',serif; font-size:1rem; font-weight:700; letter-spacing:.12em; cursor:pointer; transition:all .2s; }
+  .hdr-theme:hover { color:var(--gold); border-color:var(--gold-dim); }
+  .hdr-screenshot { display:inline-flex; align-items:center; gap:7px; background:transparent; color:var(--text-dim); border:1px solid var(--border); border-radius:4px; padding:10px 20px; font-family:'Cinzel',serif; font-size:1rem; font-weight:700; letter-spacing:.12em; cursor:pointer; transition:all .2s; }
+  .hdr-screenshot:hover { color:var(--purple-light); border-color:var(--purple-dim); }
+
+  /* ══ LIGHT THEME (body.light) ══ */
+  body.light {
+    --gold:        #7A5500;
+    --gold-light:  #5C3F00;
+    --gold-dim:    #9A6A10;
+    --purple:      #5030A0;
+    --purple-light:#3818A0;
+    --purple-dim:  #7050C0;
+    --blue:        #1A4D8C;
+    --blue-light:  #1A3A6A;
+    --red:         #8B1A1A;
+    --green:       #1B6B18;
+    --silver:      #506070;
+    --bronze:      #7A4A20;
+    --bg-dark:     #F3F0F8;
+    --bg-card:     #FFFFFF;
+    --bg-panel:    #EAE4F5;
+    --bg-row:      #F3F0F8;
+    --bg-row-alt:  #E8E0F0;
+    --text-main:   #1A0A2E;
+    --text-dim:    #4A3888;
+    --text-muted:  #7060A0;
+    --border:      #C0B0D8;
+    --border-gold: #BF9A30;
+  }
+  body.light header { background:linear-gradient(180deg,#E8E0F5 0%,#F3F0F8 100%); border-bottom-color:#BF9A30; }
+  body.light header h1 { text-shadow:0 1px 3px rgba(0,0,0,.1); }
+  body.light .night-bar { background:linear-gradient(90deg,transparent,#7050C0,#BF9A30,#7050C0,transparent); }
+  body.light .live-badge { background:rgba(122,85,0,.07); border-color:#BF9A30; }
+  body.light .refresh-btn:hover, body.light .hdr-theme:hover { background:rgba(122,85,0,.06); }
+  body.light .hdr-screenshot:hover { background:rgba(80,48,160,.06); }
+  body.light #loadingScreen { background:#F3F0F8; }
+  body.light #errorScreen   { background:#F3F0F8; }
+  body.light .error-code    { background:#EAE4F5; border-color:#C0B0D8; }
+  body.light .tab-nav { background:#F3F0F8; border-bottom-color:#BF9A30; }
+  body.light .tab-btn { background:transparent; border-color:transparent; }
+  body.light .tab-btn.active { color:#5C3F00; border-color:#7A5500; background:rgba(122,85,0,.09); }
+  body.light .controls { background:#FFFFFF; border-bottom-color:#C0B0D8; }
+  body.light select { background-color:#EAE4F5; color:#1A0A2E; border-color:#BF9A30; }
+  body.light .period-bar { background:#FFFFFF; border-bottom-color:#C0B0D8; }
+  body.light .period-btn.active { background:rgba(122,85,0,.10); border-color:#7A5500; }
+  body.light .standings-tbl-wrap { border-color:#BF9A30; }
+  body.light .team-podium-wrap { background:linear-gradient(180deg,#E8E0F5,#F3F0F8); border-color:#BF9A30; }
+  body.light table { color:#1A0A2E; }
+  body.light thead tr { background:#EAE4F5; }
+  body.light tbody tr { border-bottom-color:#C0B0D8; }
+  body.light tbody tr:nth-child(even) { background:#E8E0F0; }
+  body.light tbody tr:nth-child(odd)  { background:#F3F0F8; }
+  body.light tbody tr:hover { background:rgba(122,85,0,.05); }
+  body.light .player-search { background:#EAE4F5; border-color:#C0B0D8; color:#1A0A2E; }
+  body.light .player-tbl-wrap { border-color:#BF9A30; }
+  body.light .player-tbl thead tr { background:#EAE4F5; }
+  body.light .player-tbl tbody tr:nth-child(even) { background:#E8E0F0; }
+  body.light .player-tbl tbody tr:nth-child(odd)  { background:#F3F0F8; }
+  body.light .player-tbl tbody tr:hover { background:rgba(122,85,0,.05); }
+  body.light .stat-card { background:#FFFFFF; border-color:#BF9A30; }
+  body.light .sc-head { background:#EAE4F5; border-bottom-color:#BF9A30; }
+  body.light .sc-row:hover { background:rgba(122,85,0,.04); }
+  body.light .lg-banner { background:linear-gradient(180deg,#E0D8F0,#F3F0F8); border-bottom-color:#7050C0; }
+  body.light .lg-banner-title { color:#3818A0; text-shadow:none; }
+  body.light .lg-card { border-color:#7050C0; }
+  body.light .lg-ch { background:linear-gradient(135deg,#E0D8F0,#D0C4E8); border-bottom-color:#7050C0; }
+  body.light .lg-ch-gold { background:linear-gradient(135deg,#F5ECD0,#EAD8A0); border-bottom-color:#BF9A30; }
+  body.light .lg-ch .lg-ch-title { color:#3818A0; }
+  body.light .lg-ch-gold .lg-ch-title { color:#5C3F00; }
+  body.light .lg-tbl thead tr { background:#EAE4F5; }
+  body.light .lg-tbl th { color:#4A3888; border-bottom-color:#7050C0; }
+  body.light .lg-tbl tbody tr { border-bottom-color:#C0B0D8; }
+  body.light .lg-tbl tbody tr:nth-child(odd)  { background:#F3F0F8; }
+  body.light .lg-tbl tbody tr:nth-child(even) { background:#FFFFFF; }
+  body.light .lg-tbl tbody tr:hover { background:rgba(80,48,160,.07)!important; }
+  body.light .lg-tbl td { color:#1A0A2E; }
+  body.light .lg-tbl td.val { color:#3818A0; }
+  body.light .out-header-wrap { background:linear-gradient(135deg,#E0D8F0,#D0C4E8); border-bottom-color:#7050C0; }
+  body.light .out-main-title { color:#3818A0; text-shadow:none; }
+  body.light .out-bar { background:linear-gradient(90deg,transparent,#7050C0,#5030A0,#7050C0,transparent); }
+  body.light .out-sec-hdr { background:linear-gradient(135deg,#E0D8F0,#D0C4E8); color:#3818A0; border-top-color:#7050C0; }
+  body.light .out-sec-sub { background:linear-gradient(135deg,#E0D8F0,#D0C4E8); }
+  body.light .out-row { border-bottom-color:#C0B0D8; }
+  body.light .out-row:nth-child(odd)  { background:#F3F0F8; }
+  body.light .out-row:nth-child(even) { background:#FFFFFF; }
+  body.light .out-row:hover { background:rgba(80,48,160,.06)!important; }
+  body.light .out-name { color:#1A0A2E; }
+  body.light .out-pts  { color:#3818A0; }
+  body.light .cal-tz-bar { background:#FFFFFF; border-bottom-color:#C0B0D8; }
+  body.light .cal-filter-bar { background:#FFFFFF; border-bottom-color:#C0B0D8; }
+  body.light .cal-info-bar { background:#FFFFFF; border-bottom-color:#C0B0D8; color:#7060A0; }
+  body.light .cal-date-hdr { background:#EAE4F5; border-color:#BF9A30; color:#5C3F00; }
+  body.light .cal-cell { background:#FFFFFF; border-color:#C0B0D8; }
+  body.light .cal-tourn { background:rgba(80,48,160,.06); border-left-color:#7050C0; }
+  body.light .cal-tourn.midnight { background:rgba(122,85,0,.06); border-left-color:#9A6A10; }
+  body.light .cal-lobby-link a { color:#5030A0; }
+  body.light .members-section { background:#F3F0F8; }
+  body.light .team-card { background:#FFFFFF; border-color:#BF9A30; }
+  body.light .team-member-link { color:#1A0A2E; }
+  body.light .team-member-link:hover { background:rgba(122,85,0,.06); color:#5C3F00; }
+  body.light footer { border-top-color:#C0B0D8; }
+
+  /* ── AVATARS ── */
+  .avatars-section { padding:24px 20px 48px; }
+  .avatars-how { background:var(--bg-card); border:1px solid var(--border-gold); border-radius:8px; padding:18px 22px; margin-bottom:28px; max-width:860px; margin-left:auto; margin-right:auto; }
+  .avatars-how-title { font-family:'Cinzel',serif; font-size:.82rem; font-weight:700; letter-spacing:.2em; color:var(--gold); text-transform:uppercase; margin-bottom:14px; }
+  .avatars-how-steps { display:flex; flex-direction:column; gap:10px; }
+  .avatars-how-step { display:flex; gap:12px; align-items:flex-start; }
+  .avatars-step-icon { font-size:1.1rem; flex-shrink:0; margin-top:1px; }
+  .avatars-step-body { font-size:.92rem; color:var(--text-main); line-height:1.6; }
+  .avatars-step-body strong { font-family:'Cinzel',serif; color:var(--gold-light); font-size:.78rem; letter-spacing:.08em; }
+  .avatars-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; max-width:860px; margin:0 auto; }
+  .avatar-card { background:var(--bg-card); border:1px solid var(--border-gold); border-radius:8px; overflow:hidden; display:flex; flex-direction:column; align-items:center; transition:box-shadow .2s; }
+  .avatar-card:hover { box-shadow:0 0 22px rgba(201,168,76,.2); }
+  .avatar-img-wrap { width:100%; aspect-ratio:1/1; overflow:hidden; background:var(--bg-dark); }
+  .avatar-img { width:100%; height:100%; object-fit:cover; display:block; cursor:grab; transition:transform .2s; }
+  .avatar-img:hover { transform:scale(1.04); }
+  .avatar-card-body { padding:12px 14px; width:100%; display:flex; flex-direction:column; gap:8px; }
+  .avatar-card-title { font-family:'Cinzel',serif; font-size:.78rem; font-weight:700; letter-spacing:.08em; color:var(--gold-light); text-align:center; line-height:1.4; }
+  .avatar-url { font-size:.6rem; color:var(--text-muted); font-family:monospace; word-break:break-all; text-align:center; line-height:1.4; }
+  .avatar-copy-btn { width:100%; font-family:'Cinzel',serif; font-size:.68rem; font-weight:700; letter-spacing:.12em; padding:7px 12px; border:1px solid var(--gold-dim); border-radius:4px; background:transparent; color:var(--gold); cursor:pointer; transition:all .2s; }
+  .avatar-copy-btn:hover { background:rgba(201,168,76,.12); border-color:var(--gold); }
+  .avatar-copy-btn.copied { border-color:var(--green); color:var(--green); background:rgba(76,175,80,.1); }
+  body.light .avatars-how { background:#FFFFFF; border-color:#BF9A30; }
+  body.light .avatars-step-body { color:#1A0A2E; }
+  body.light .avatar-card { background:#FFFFFF; border-color:#BF9A30; }
+  body.light .avatar-url { color:#7060A0; }
+  body.light .avatar-copy-btn { color:#7A5500; border-color:#9A6A10; }
+  body.light .avatar-copy-btn:hover { background:rgba(122,85,0,.08); }
+
+  /* ── CALCULATOR ── */
+  .calc-section { padding:24px 16px 48px; display:flex; flex-direction:row; align-items:flex-start; justify-content:center; gap:28px; flex-wrap:wrap; }
+  .calc-left { display:flex; flex-direction:column; align-items:stretch; flex-shrink:0; }
+  .calc-controls { display:flex; align-items:center; gap:24px; padding:16px 20px; background:var(--bg-card); border:1px solid var(--border-gold); border-radius:6px 6px 0 0; flex-wrap:wrap; width:100%; max-width:480px; }
+  .calc-label { font-family:'Cinzel',serif; font-size:.78rem; font-weight:700; letter-spacing:.16em; color:var(--text-dim); text-transform:uppercase; white-space:nowrap; }
+  .calc-input { background:var(--bg-panel); color:var(--gold); border:1px solid var(--border-gold); border-radius:4px; padding:9px 13px; font-family:'Cinzel',serif; font-size:.95rem; font-weight:700; outline:none; width:100px; text-align:right; appearance:textfield; -moz-appearance:textfield; }
+  .calc-input::-webkit-outer-spin-button, .calc-input::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
+  .calc-input:focus { border-color:var(--gold); box-shadow:0 0 0 2px rgba(201,168,76,.15); }
+  .calc-summary { display:flex; gap:32px; flex-wrap:wrap; padding:14px 20px; background:var(--bg-panel); border:1px solid var(--border-gold); border-top:none; width:100%; max-width:480px; }
+  .calc-stat { display:flex; flex-direction:column; gap:4px; }
+  .calc-stat-label { font-family:'Cinzel',serif; font-size:.78rem; letter-spacing:.16em; color:var(--text-dim); text-transform:uppercase; }
+  .calc-stat-val { font-family:'Cinzel',serif; font-size:1.35rem; font-weight:700; color:var(--gold-light); }
+  .calc-formula { font-size:.68rem; color:var(--text-muted); font-style:italic; text-align:center; padding:5px 12px; background:var(--bg-card); border:1px solid var(--border-gold); border-top:none; width:100%; max-width:480px; letter-spacing:.02em; }
+  .calc-tbl-wrap { border:1px solid var(--border-gold); border-top:none; border-radius:0 0 6px 6px; overflow:hidden; width:100%; max-width:480px; max-height:65vh; overflow-y:auto; }
+  .calc-tbl { width:100%; border-collapse:collapse; font-size:.88rem; }
+  .calc-tbl thead tr { background:var(--bg-dark); position:sticky; top:0; z-index:1; }
+  .calc-tbl th { font-family:'Cinzel',serif; font-size:.64rem; font-weight:700; letter-spacing:.14em; color:var(--text-dim); text-transform:uppercase; padding:9px 16px; text-align:right; border-bottom:2px solid var(--border-gold); white-space:nowrap; }
+  .calc-tbl th:first-child { text-align:left; }
+  .calc-tbl tbody tr { border-bottom:1px solid var(--border); transition:background .1s; }
+  .calc-tbl tbody tr:nth-child(even){background:var(--bg-row-alt)} .calc-tbl tbody tr:nth-child(odd){background:var(--bg-row)}
+  .calc-tbl tbody tr:hover{background:rgba(201,168,76,.05)}
+  .calc-tbl tbody tr.r1{background:rgba(201,168,76,.09)!important;border-left:3px solid var(--gold)}
+  .calc-tbl tbody tr.r2{background:rgba(168,184,200,.06)!important;border-left:3px solid var(--silver)}
+  .calc-tbl tbody tr.r3{background:rgba(196,122,69,.06)!important;border-left:3px solid var(--bronze)}
+  .calc-tbl td { padding:7px 16px; text-align:right; font-variant-numeric:tabular-nums; }
+  .calc-tbl td:first-child { text-align:left; font-family:'Cinzel',serif; font-size:.82rem; font-weight:700; color:var(--text-muted); }
+  .calc-tbl tr.r1 td:first-child{color:var(--gold)} .calc-tbl tr.r2 td:first-child{color:var(--silver)} .calc-tbl tr.r3 td:first-child{color:var(--bronze)}
+  .calc-tbl td.pts { font-weight:700; color:var(--text-main); }
+  .calc-tbl tr.r1 td.pts{color:var(--gold-light)} .calc-tbl tr.r2 td.pts{color:var(--silver)} .calc-tbl tr.r3 td.pts{color:var(--bronze)}
+  .calc-empty { text-align:center; padding:48px 16px; color:var(--gold-light); font-style:italic; font-size:1rem; }
+  body.light .calc-controls { background:#FFFFFF; border-color:#BF9A30; }
+  body.light .calc-input { background:#EAE4F5; color:#1A0A2E; border-color:#BF9A30; }
+  body.light .calc-summary { background:#EAE4F5; border-color:#BF9A30; }
+  body.light .calc-formula { background:#FFFFFF; border-color:#BF9A30; }
+  body.light .calc-tbl-wrap { border-color:#BF9A30; }
+  body.light .calc-tbl thead tr { background:#EAE4F5; }
+  body.light .calc-tbl tbody tr:nth-child(even) { background:#E8E0F0; }
+  body.light .calc-tbl tbody tr:nth-child(odd)  { background:#F3F0F8; }
+  body.light .calc-tbl tbody tr:hover { background:rgba(122,85,0,.05); }
+  /* ── CALC EXPLAINER ── */
+  .calc-explainer { width:100%; max-width:480px; display:flex; flex-direction:column; gap:0; border:1px solid var(--border-gold); border-radius:8px; overflow:hidden; flex-shrink:0; }
+  .calc-exp-hdr { background:var(--bg-dark); padding:13px 18px; border-bottom:2px solid var(--border-gold); font-family:'Cinzel',serif; font-size:.82rem; font-weight:700; letter-spacing:.18em; color:var(--gold); text-transform:uppercase; }
+  .calc-exp-body { background:var(--bg-card); padding:0; display:flex; flex-direction:column; }
+  .calc-exp-block { padding:14px 18px; border-bottom:1px solid var(--border); }
+  .calc-exp-block:last-child { border-bottom:none; }
+  .calc-exp-title { font-family:'Cinzel',serif; font-size:.72rem; font-weight:700; letter-spacing:.14em; color:var(--gold-light); text-transform:uppercase; margin-bottom:8px; display:flex; align-items:center; gap:7px; }
+  .calc-exp-text { font-size:.9rem; color:var(--text-main); line-height:1.7; }
+  .calc-exp-text em { color:var(--gold-dim); font-style:normal; font-family:'Cinzel',serif; font-size:.8rem; }
+  .calc-exp-rules { display:flex; flex-direction:column; gap:7px; margin-top:4px; }
+  .calc-exp-rule { display:flex; gap:10px; align-items:flex-start; font-size:.88rem; color:var(--text-main); line-height:1.6; }
+  .calc-exp-rule-icon { flex-shrink:0; font-size:1rem; margin-top:1px; }
+  .calc-exp-rule strong { font-family:'Cinzel',serif; color:var(--gold-light); font-size:.76rem; letter-spacing:.06em; display:block; margin-bottom:1px; }
+  .calc-exp-formula-box { background:var(--bg-panel); border:1px solid var(--border-gold); border-radius:4px; padding:10px 14px; font-family:monospace; font-size:.85rem; color:var(--gold-light); text-align:center; margin:8px 0 4px; letter-spacing:.04em; }
+  .calc-exp-mult-table { width:100%; border-collapse:collapse; font-size:.8rem; margin-top:8px; }
+  .calc-exp-mult-table th { font-family:'Cinzel',serif; font-size:.6rem; letter-spacing:.1em; color:var(--text-dim); text-transform:uppercase; padding:5px 10px; border-bottom:1px solid var(--border-gold); text-align:right; background:var(--bg-dark); }
+  .calc-exp-mult-table th:first-child { text-align:left; }
+  .calc-exp-mult-table td { padding:4px 10px; border-bottom:1px solid var(--border); color:var(--text-main); text-align:right; font-variant-numeric:tabular-nums; }
+  .calc-exp-mult-table td:first-child { text-align:left; color:var(--gold); font-family:'Cinzel',serif; font-size:.78rem; font-weight:700; }
+  .calc-exp-mult-table tr:last-child td { border-bottom:none; }
+  .calc-exp-mult-table tr:hover td { background:rgba(201,168,76,.04); }
+  body.light .calc-explainer { border-color:#BF9A30; }
+  body.light .calc-exp-hdr { background:#EAE4F5; border-bottom-color:#BF9A30; }
+  body.light .calc-exp-body { background:#FFFFFF; }
+  body.light .calc-exp-block { border-bottom-color:#C0B0D8; }
+  body.light .calc-exp-text { color:#1A0A2E; }
+  body.light .calc-exp-rule { color:#1A0A2E; }
+  body.light .calc-exp-formula-box { background:#EAE4F5; border-color:#BF9A30; color:#5C3F00; }
+  body.light .calc-exp-mult-table th { background:#EAE4F5; }
+  body.light .calc-exp-mult-table td { border-bottom-color:#C0B0D8; color:#1A0A2E; }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
@@ -354,6 +557,8 @@
   <div class="header-actions">
     <div class="live-badge"><span class="live-dot"></span> LIVE DATA</div>
     <button class="refresh-btn" id="refreshBtn"><span class="ri">↻</span> REFRESH</button>
+    <button class="hdr-screenshot" onclick="captureTab()">&#128247; COPY TO CLIPBOARD</button>
+    <button class="hdr-theme" id="themeBtn" onclick="toggleTheme()">&#9788; LIGHT THEME</button>
   </div>
   <div class="updated-time" id="updatedTime"></div>
 </header>
@@ -366,7 +571,9 @@
   <button class="tab-btn active" id="tab-latest"    onclick="switchTab('latest')">🌙 LATEST GAME</button>
   <button class="tab-btn"        id="tab-calendar"  onclick="switchTab('calendar')">📅 CALENDAR</button>
   <button class="tab-btn"        id="tab-members"   onclick="switchTab('members')">👥 MEMBERS</button>
-  <button class="tab-btn"        id="tab-video"     onclick="switchTab('video')">🎬 VIDEO</button>
+  <a class="tab-btn" href="https://docs.google.com/videos/d/1V2kSb1TIQOZS6RvPwgn9TwHxj3Qg7vfn2PdfP1lpBOQ/edit?usp=sharing" target="_blank" rel="noopener">🎬 MAIN LEADER BOARD VIDEO</a>
+  <button class="tab-btn"        id="tab-calc"      onclick="switchTab('calc')">🧮 CALCULATOR</button>
+  <button class="tab-btn"        id="tab-avatars"   onclick="switchTab('avatars')">🖼 AVATARS</button>
 </div>
 
 <!-- CONTROLS (standings + players) -->
@@ -482,17 +689,105 @@
 </div>
 
 <!-- ══ VIDEO SECTION ══ -->
-<div id="section-video" style="display:none">
-  <div style="padding:16px;display:flex;flex-direction:column;align-items:center">
-    <h2 style="font-family:'Cinzel',serif;font-size:1rem;font-weight:700;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:14px">Midnight Grinders — League Video</h2>
-    <div style="width:100%;max-width:1200px;aspect-ratio:16/9;background:var(--bg-card);border:1px solid var(--border-gold);border-radius:8px;overflow:hidden">
-      <iframe id="videoFrame"
-        src="https://www.youtube.com/embed/N-wCL4s-DRs"
-        style="width:100%;height:100%;border:none;display:block"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
+
+<!-- ══ AVATARS SECTION ══ -->
+<div id="section-avatars" style="display:none">
+  <div class="avatars-section">
+
+    <div class="avatars-how">
+      <div class="avatars-how-title">⚙ How to use these avatars on Replay Poker</div>
+      <div class="avatars-how-steps">
+        <div class="avatars-how-step">
+          <span class="avatars-step-icon">📋</span>
+          <div class="avatars-step-body"><strong>Copy Link</strong> — Click the COPY LINK button under any avatar. On Replay Poker go to <em>Settings → Edit Profile</em>, paste the copied link into the Avatar URL field, then save.</div>
+        </div>
+        <div class="avatars-how-step">
+          <span class="avatars-step-icon">🖱</span>
+          <div class="avatars-step-body"><strong>Drag &amp; Drop</strong> — Drag any avatar image directly from this page onto the profile picture upload area on Replay Poker.</div>
+        </div>
+        <div class="avatars-how-step">
+          <span class="avatars-step-icon">💾</span>
+          <div class="avatars-step-body"><strong>Save to Device</strong> — Right-click any avatar (or long-press on mobile) and choose <em>Save image as…</em> to download it, then upload from your device on Replay Poker.</div>
+        </div>
+      </div>
     </div>
+
+    <div class="avatars-grid" id="avatarsGrid"></div>
+
+  </div>
+</div>
+
+<!-- ══ CALCULATOR SECTION ══ -->
+<div id="section-calc" style="display:none">
+  <div class="calc-section">
+    <!-- left: interactive calculator -->
+    <div class="calc-left">
+      <div class="calc-controls">
+        <div style="display:flex;align-items:center;gap:10px">
+          <label class="calc-label" for="calcPlayers"># Players</label>
+          <select id="calcPlayers" onchange="renderCalc()"></select>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <label class="calc-label" for="calcBuyin">Buy-in</label>
+          <select id="calcBuyin" onchange="renderCalc()"></select>
+        </div>
+      </div>
+      <div class="calc-summary" id="calcSummary" style="display:none">
+        <div class="calc-stat"><span class="calc-stat-label">Players</span><span class="calc-stat-val" id="calcStatPlayers">—</span></div>
+        <div class="calc-stat"><span class="calc-stat-label">Buy-in</span><span class="calc-stat-val" id="calcStatBuyin">—</span></div>
+        <div class="calc-stat"><span class="calc-stat-label">1st Place</span><span class="calc-stat-val" id="calcStatFirst">—</span></div>
+        <div class="calc-stat"><span class="calc-stat-label">Last Place</span><span class="calc-stat-val" id="calcStatLast">—</span></div>
+      </div>
+      <div class="calc-formula">Formula: 1000 × √players ÷ √position × (1 + log₁₀(buy-in))</div>
+      <div class="calc-tbl-wrap">
+        <table class="calc-tbl">
+          <thead><tr><th>Position</th><th>Points</th></tr></thead>
+          <tbody id="calcTbody">
+            <tr><td colspan="2" class="calc-empty">Enter players and buy-in above to calculate point values.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- end .calc-left -->
+
+    <!-- right: league point rules explainer -->
+    <div class="calc-explainer">
+      <div class="calc-exp-hdr">🧮 How Points Are Calculated</div>
+      <div class="calc-exp-body">
+
+        <div class="calc-exp-block">
+          <div class="calc-exp-title">The Formula</div>
+          <div class="calc-exp-formula-box">Points = ⌈ 1000 × √N ÷ √P × (1 + log₁₀(B)) ⌉</div>
+          <div class="calc-exp-text">Where <strong>N</strong> = total players, <strong>P</strong> = finishing position, and <strong>B</strong> = buy-in amount. The ⌈ ⌉ symbol means the result is always rounded <em>up</em> to the nearest whole number.</div>
+        </div>
+
+        <div class="calc-exp-block">
+          <div class="calc-exp-title">Field Size Effect</div>
+          <div class="calc-exp-text">Every position earns more points when more players enter. Beating 100 players pays more than beating 10 — the √N factor scales the entire payout table up as fields grow.</div>
+        </div>
+
+        <div class="calc-exp-block">
+          <div class="calc-exp-title">Position Decay</div>
+          <div class="calc-exp-text">Points drop with each finishing position following a square-root curve. The gap between 1st and 2nd is large; the gap between 50th and 51st is small. Every place that finishes earns points — there is no cut-off.</div>
+        </div>
+
+        <div class="calc-exp-block">
+          <div class="calc-exp-title">Team Scoring — Top 5 Rule</div>
+          <div class="calc-exp-text">Each team has multiple players competing each game. Only the <strong>top 5 individual scores</strong> from each team count toward that team's game total. This rewards depth — teams need consistent performers, not just one star player.</div>
+        </div>
+
+        <div class="calc-exp-block">
+          <div class="calc-exp-title">No Bonus Points</div>
+          <div class="calc-exp-text">This league uses pure finish-position points only. There are no bounty bonuses, streak bonuses, or attendance bonuses. Your score is exactly what the formula produces.</div>
+        </div>
+
+        <div class="calc-exp-block">
+          <div class="calc-exp-title">Quarterly Leaderboard</div>
+          <div class="calc-exp-text">The leaderboard runs for one full quarter. All game scores accumulate over the quarter and are tracked both here on this webapp and on the main league leaderboard. At the end of the quarter, <strong>the top team is crowned champion</strong>. Individual performances are tracked throughout and each player's stats are monitored for yearly achievement, giving every player a record of their advancement over time.</div>
+        </div>
+
+      </div><!-- end .calc-exp-body -->
+    </div><!-- end .calc-explainer -->
+
   </div>
 </div>
 
@@ -530,12 +825,12 @@ function teamAvatar(name, size) {
   var meta = TEAM_META[name];
   if (!meta) return '';
   var sz = size || '70px';
-  return '<img src="'+esc(meta.avatar)+'" style="width:'+sz+';height:'+sz+';border-radius:50%;object-fit:cover;" alt="'+esc(name)+'">';
+  return '<img src="'+esc(meta.avatar)+'" style="width:'+sz+';height:'+sz+';border-radius:50%;object-fit:cover;" alt="'+esc(name)+'" onerror="this.style.display=\'none\'">';
 }
 function playerIcon(teamName) {
   var meta = TEAM_META[teamName];
   if (!meta) return '';
-  return '<img class="player-team-icon" src="'+esc(meta.avatar)+'" alt="'+esc(teamName)+'">';
+  return '<img class="player-team-icon" src="'+esc(meta.avatar)+'" alt="'+esc(teamName)+'" onerror="this.style.display=\'none\'">';
 }
 
 var MEMBERS = {};
@@ -653,7 +948,7 @@ function showError(msg) {
 // ── TAB SWITCHING ─────────────────────────────────────────────
 function switchTab(tab) {
   activeTab = tab;
-  ['standings','players','leaders','latest','calendar','members','video'].forEach(function(t) {
+  ['standings','players','leaders','latest','calendar','members','calc','avatars'].forEach(function(t) {
     document.getElementById('tab-'+t).classList.toggle('active', t === tab);
     document.getElementById('section-'+t).style.display = (t === tab) ? '' : 'none';
   });
@@ -665,6 +960,7 @@ function switchTab(tab) {
   if (tab === 'latest')    renderLatestGame();
   if (tab === 'calendar')  renderCalTab();
   if (tab === 'members')   renderMembers();
+  if (tab === 'avatars')   renderAvatars();
 }
 
 // ── PERIOD BAR ────────────────────────────────────────────────
@@ -707,7 +1003,7 @@ function renderMembers() {
       return '<a class="team-member-link" href="https://www.casino.org/replaypoker/profile/'+encodeURIComponent(name)+'" target="_blank">'+esc(name)+'</a>';
     }).join('');
     return '<div class="team-card">'+
-      '<img class="team-card-img" src="'+esc(meta.avatar)+'" alt="'+esc(shortName)+'">'+
+      '<img class="team-card-img" src="'+esc(meta.avatar)+'" alt="'+esc(shortName)+'" onerror="this.style.display=\'none\'">'+
       '<div class="team-card-name" style="color:'+esc(meta.color)+'">'+esc(shortName)+'</div>'+
       '<div class="team-card-divider" style="background:'+esc(meta.color)+'"></div>'+
       '<div class="team-member-list">'+(memberLinks||'<span style="color:var(--text-muted);font-style:italic;padding:8px;display:block;text-align:center">No members listed</span>')+'</div>'+
@@ -759,7 +1055,7 @@ function buildTeamPodium(teams) {
     var clr  = team.color || m.txt;
     var meta = TEAM_META[team.team];
     var avatarHtml = meta
-      ? '<img src="'+esc(meta.avatar)+'" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid '+esc(m.border)+';box-shadow:0 0 16px '+esc(m.border)+'66" alt="'+esc(team.team)+'">'
+      ? '<img src="'+esc(meta.avatar)+'" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid '+esc(m.border)+';box-shadow:0 0 16px '+esc(m.border)+'66" alt="'+esc(team.team)+'" onerror="this.style.display=\'none\'">'
       : '<div style="font-size:3.3rem;line-height:1.1">'+esc(teamIcon(team.team))+'</div>';
     var sName = (team.team||'').replace('Midnight ','');
     return '<div class="pp">'+
@@ -843,7 +1139,8 @@ function renderPlayersTable() {
     var bg  = clr + '22';
     return '<tr class="'+rc+'">'+
       '<td class="left rc">'+rl+'</td>'+
-      '<td class="left player-name">'+playerIcon(r.team)+esc(r.player)+
+      '<td class="left player-name">'+playerIcon(r.team)+
+        '<a href="https://www.casino.org/replaypoker/profile/'+encodeURIComponent(r.player)+'" target="_blank" style="color:inherit;text-decoration:none;" onmouseover="this.style.color=\'var(--gold-light)\'" onmouseout="this.style.color=\'\'">'+esc(r.player)+'</a>'+
         '<span class="team-badge" style="color:'+esc(clr)+';background:'+bg+'">'+esc(r.teamAbbr||r.team||'')+'</span>'+
       '</td>'+
       '<td class="pts-total">'+n(r.points)+'</td>'+
@@ -913,7 +1210,7 @@ function renderLeaders() {
         : 0;
       var barColor = r.teamColor || 'var(--gold-dim)';
       var barHtml = '<td class="sc-bar-cell"><div class="sc-bar-wrap"><div class="sc-bar" style="width:'+barPct+'%;background:'+barColor+'"></div></div></td>';
-      return '<tr class="sc-row '+rc+'"><td class="sc-rk">'+rl+'</td><td class="sc-name">'+playerIcon(r.team)+esc(r.player)+'</td>'+barHtml+'<td class="sc-val">'+cfg.val(r)+sub+'</td></tr>';
+      return '<tr class="sc-row '+rc+'"><td class="sc-rk">'+rl+'</td><td class="sc-name">'+playerIcon(r.team)+'<a href="https://www.casino.org/replaypoker/profile/'+encodeURIComponent(r.player)+'" target="_blank" style="color:inherit;text-decoration:none;" onmouseover="this.style.color=\'var(--gold-light)\'" onmouseout="this.style.color=\'\'">'+esc(r.player)+'</a></td>'+barHtml+'<td class="sc-val">'+cfg.val(r)+sub+'</td></tr>';
     }).join('');
     grid.innerHTML += '<div class="stat-card"><div class="sc-head"><span class="sc-icon">'+cfg.icon+'</span><span class="sc-title">'+cfg.title+'</span><span class="sc-min">'+minNote+'</span></div><div class="sc-body"><table class="sc-tbl"><tbody>'+rowsHtml+'</tbody></table></div></div>';
   });
@@ -952,7 +1249,7 @@ function renderLatestGame() {
     var wShort     = winner.team.replace('Midnight ','');
     var wMeta      = TEAM_META[winner.team];
     var wAvatarHtml = wMeta
-      ? '<img src="'+esc(wMeta.avatar)+'" style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);box-shadow:0 0 20px rgba(201,168,76,.4)" alt="'+esc(winner.team)+'">'
+      ? '<img src="'+esc(wMeta.avatar)+'" style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);box-shadow:0 0 20px rgba(201,168,76,.4)" alt="'+esc(winner.team)+'" onerror="this.style.display=\'none\'">'
       : '<span class="lg-winner-icon" style="font-size:4.8rem">'+esc(teamIcon(winner.team))+'</span>';
     winnerEl.innerHTML =
       '<div class="lg-winner-wrap">'+
@@ -981,7 +1278,7 @@ function renderLatestGame() {
           var sName = team.team.replace('Midnight ','');
           var tMeta = TEAM_META[team.team];
           var avHtml = tMeta
-            ? '<img src="'+esc(tMeta.avatar)+'" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid '+esc(m.border)+';box-shadow:0 0 16px '+esc(m.border)+'66" alt="'+esc(team.team)+'">'
+            ? '<img src="'+esc(tMeta.avatar)+'" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid '+esc(m.border)+';box-shadow:0 0 16px '+esc(m.border)+'66" alt="'+esc(team.team)+'" onerror="this.style.display=\'none\'">'
             : '<div style="font-size:4.8rem;line-height:1.1">'+esc(teamIcon(team.team))+'</div>';
           return '<div class="pp">'+
             avHtml+
@@ -1155,15 +1452,158 @@ function renderCalTab() {
   if (todayHdr) setTimeout(function(){ todayHdr.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}); }, 80);
 }
 
+// ── AVATARS ───────────────────────────────────────────────────
+var MG_AVATARS = [
+  { title:'Midnight Grind League',          url:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightGrindLeague.png' },
+  { title:'Midnight Riders — Team (Woman)', url:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightRidersWoman2.jpg' },
+  { title:'Midnight Riders — Man 1',        url:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightRidersMan4.jpg' },
+  { title:'Midnight Riders — Man 2',        url:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightRidersMan3.jpg' },
+  { title:'Midnight Masters — Team',        url:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightMasters1.jpg' },
+  { title:'Midnight Rollers — Team',        url:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightRollers7.jpg' },
+  { title:'Midnight Maniacs — Team',        url:'https://raw.githubusercontent.com/RainsPlace/Avatars/main/Midnight%20Grind/MidnightMananiacs2.jpg' }
+];
+
+function renderAvatars() {
+  var grid = document.getElementById('avatarsGrid');
+  if (!grid || grid.innerHTML) return; // only render once
+  grid.innerHTML = MG_AVATARS.map(function(av, i) {
+    return '<div class="avatar-card">'+
+      '<div class="avatar-img-wrap">'+
+        '<img class="avatar-img" src="'+esc(av.url)+'" alt="'+esc(av.title)+'" draggable="true" onerror="this.style.opacity=\'.3\'">'+
+      '</div>'+
+      '<div class="avatar-card-body">'+
+        '<div class="avatar-card-title">'+esc(av.title)+'</div>'+
+        '<button class="avatar-copy-btn" id="acb-'+i+'" onclick="copyAvatarLink(\''+esc(av.url)+'\','+i+')">📋 COPY LINK</button>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+function copyAvatarLink(url, idx) {
+  var btn = document.getElementById('acb-'+idx);
+  navigator.clipboard.writeText(url).then(function() {
+    if (btn) { btn.textContent = '\u2713 COPIED!'; btn.classList.add('copied'); }
+    setTimeout(function() {
+      if (btn) { btn.textContent = '\uD83D\uDCCB COPY LINK'; btn.classList.remove('copied'); }
+    }, 2000);
+  }).catch(function() {
+    /* fallback for browsers that block clipboard */
+    var ta = document.createElement('textarea');
+    ta.value = url; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); if (btn) { btn.textContent = '\u2713 COPIED!'; btn.classList.add('copied'); setTimeout(function(){ if(btn){btn.textContent='\uD83D\uDCCB COPY LINK';btn.classList.remove('copied');}},2000); } }
+    catch(e) { alert('Could not copy. URL:\n'+url); }
+    document.body.removeChild(ta);
+  });
+}
+
+// ── CALCULATOR ───────────────────────────────────────────────
+function initCalc() {
+  var pSel = document.getElementById('calcPlayers');
+  pSel.innerHTML = '<option value="">— Select —</option>';
+  for (var i = 1; i <= 200; i++) {
+    pSel.innerHTML += '<option value="'+i+'">'+i+'</option>';
+  }
+
+  var buyins = [
+    {label:'1k',    value:1000},
+    {label:'2.5k',  value:2500},
+    {label:'5k',    value:5000},
+    {label:'7.5k',  value:7500},
+    {label:'10k',   value:10000},
+    {label:'15k',   value:15000},
+    {label:'20k',   value:20000},
+    {label:'25k',   value:25000},
+    {label:'50k',   value:50000},
+    {label:'100k',  value:100000},
+    {label:'250k',  value:250000},
+    {label:'500k',  value:500000},
+    {label:'1m',    value:1000000},
+    {label:'2.5m',  value:2500000},
+    {label:'5m',    value:5000000}
+  ];
+  var bSel = document.getElementById('calcBuyin');
+  bSel.innerHTML = '<option value="">— Select —</option>';
+  buyins.forEach(function(b) {
+    bSel.innerHTML += '<option value="'+b.value+'">'+b.label+'</option>';
+  });
+}
+
+function renderCalc() {
+  var pSel    = document.getElementById('calcPlayers');
+  var bSel    = document.getElementById('calcBuyin');
+  var players = parseInt(pSel.value) || 0;
+  var buyin   = parseFloat(bSel.value) || 0;
+  var buyinLabel = bSel.selectedIndex > 0 ? bSel.options[bSel.selectedIndex].text : '—';
+  var tbody   = document.getElementById('calcTbody');
+  var summary = document.getElementById('calcSummary');
+
+  if (players < 1 || buyin < 1) {
+    summary.style.display = 'none';
+    tbody.innerHTML = '<tr><td colspan="2" class="calc-empty">Select players and buy-in above to calculate point values.</td></tr>';
+    return;
+  }
+
+  var rows = '';
+  var firstPts = 0, lastPts = 0;
+  for (var i = 1; i <= players; i++) {
+    var pts = Math.ceil((1000 * Math.sqrt(players) / Math.sqrt(i)) * (1 + Math.log10(buyin)));
+    var rc  = i===1 ? 'r1' : i===2 ? 'r2' : i===3 ? 'r3' : '';
+    var lbl = i===1 ? '🥇 1st' : i===2 ? '🥈 2nd' : i===3 ? '🥉 3rd' : i + (i===11||i===12||i===13?'th':i%10===1?'st':i%10===2?'nd':i%10===3?'rd':'th');
+    if (i === 1) firstPts = pts;
+    lastPts = pts;
+    rows += '<tr class="'+rc+'"><td>'+lbl+'</td><td class="pts">'+pts.toLocaleString()+'</td></tr>';
+  }
+  tbody.innerHTML = rows;
+
+  document.getElementById('calcStatPlayers').textContent = players;
+  document.getElementById('calcStatBuyin').textContent   = buyinLabel;
+  document.getElementById('calcStatFirst').textContent   = firstPts.toLocaleString();
+  document.getElementById('calcStatLast').textContent    = lastPts.toLocaleString();
+  summary.style.display = 'flex';
+}
+
+// ── THEME TOGGLE ─────────────────────────────────────────────
+function toggleTheme() {
+  var isLight = document.body.classList.toggle('light');
+  var btn = document.getElementById('themeBtn');
+  if (btn) btn.textContent = isLight ? '\u2600 DARK THEME' : '\u2600 LIGHT THEME';
+}
+
+// ── SCREENSHOT / COPY TO CLIPBOARD ───────────────────────────
+function captureTab() {
+  var sectionId = 'section-' + activeTab;
+  var el = document.getElementById(sectionId);
+  if (!el) { alert('Nothing to capture.'); return; }
+  var btn = document.querySelector('.hdr-screenshot');
+  if (btn) { btn.textContent = '\u23F3 CAPTURING\u2026'; btn.disabled = true; }
+  html2canvas(el, {
+    backgroundColor: document.body.classList.contains('light') ? '#F3F0F8' : '#04060e',
+    scale: 2, useCORS: true, logging: false
+  })
+    .then(function(canvas) {
+      return canvas.toBlob(function(blob) {
+        if (!blob) throw new Error('Canvas to blob failed');
+        return navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
+      }, 'image/png');
+    })
+    .then(function() {
+      if (btn) { btn.textContent = '\u2713 COPIED!'; setTimeout(function(){ btn.textContent = '\uD83D\uDCF7 COPY TO CLIPBOARD'; btn.disabled = false; }, 2000); }
+    })
+    .catch(function(err) {
+      console.error('captureTab error:', err);
+      if (btn) { btn.textContent = '\u26A0 FAILED'; setTimeout(function(){ btn.textContent = '\uD83D\uDCF7 COPY TO CLIPBOARD'; btn.disabled = false; }, 2000); }
+      alert('Copy failed: ' + err.message + '\nTry a different browser or check clipboard permissions.');
+    });
+}
+
 // ── EVENTS ────────────────────────────────────────────────────
 document.getElementById('refreshBtn').addEventListener('click', function(){ loadData(true); });
 document.getElementById('quarterSelect').addEventListener('change', renderAll);
 
 // ── START ─────────────────────────────────────────────────────
+initCalc();
 loadData(false);
 </script>
-  <div style="text-align:center; margin-top:30px; padding-bottom:30px;">
-  <img src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Frainsplace.github.io%2FMGWebApp%2F&label=Visits&icon=cloud-drizzle&color=%23198754&message=&style=flat&tz=US%2FEastern" alt="App Visits">
-</div>
 </body>
 </html>
