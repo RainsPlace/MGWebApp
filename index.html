@@ -525,6 +525,68 @@
   body.light .calc-exp-formula-box { background:#EAE4F5; border-color:#BF9A30; color:#5C3F00; }
   body.light .calc-exp-mult-table th { background:#EAE4F5; }
   body.light .calc-exp-mult-table td { border-bottom-color:#C0B0D8; color:#1A0A2E; }
+
+  /* ── LIVE SCORE TAB ── */
+  .ls-section { padding:0 0 48px; }
+  .ls-status-bar { display:flex; align-items:center; gap:10px; padding:12px 20px; background:var(--bg-card); border-bottom:2px solid var(--border-gold); flex-wrap:wrap; }
+  .ls-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+  .ls-dot-live     { background:var(--green); box-shadow:0 0 8px var(--green); animation:pulse 2s ease-in-out infinite; }
+  .ls-dot-detecting{ background:var(--gold); animation:pulse 1.2s ease-in-out infinite; }
+  .ls-dot-idle     { background:var(--text-muted); }
+  .ls-dot-final    { background:var(--gold); box-shadow:0 0 12px rgba(201,168,76,.7); }
+  .ls-status-text  { font-family:'Cinzel',serif; font-size:.82rem; font-weight:700; letter-spacing:.1em; color:var(--text-main); flex:1; min-width:120px; }
+  .ls-countdown-wrap { font-size:.72rem; color:var(--text-dim); white-space:nowrap; }
+  .ls-updated   { font-size:.7rem; color:var(--text-muted); font-style:italic; margin-left:auto; white-space:nowrap; }
+  .ls-manual-bar { display:flex; align-items:center; gap:10px; padding:9px 20px; background:var(--bg-panel); border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .ls-manual-label { font-family:'Cinzel',serif; font-size:.68rem; letter-spacing:.15em; color:var(--text-muted); flex-shrink:0; }
+  .ls-id-input  { background:var(--bg-dark); color:var(--gold); border:1px solid var(--border-gold); border-radius:4px; padding:7px 12px; font-family:'Cinzel',serif; font-size:.82rem; outline:none; width:130px; }
+  .ls-id-input:focus { border-color:var(--gold); }
+  .ls-btn { font-family:'Cinzel',serif; font-size:.7rem; font-weight:700; letter-spacing:.1em; padding:7px 14px; border:1px solid var(--border-gold); border-radius:4px; background:transparent; color:var(--gold); cursor:pointer; transition:all .2s; white-space:nowrap; }
+  .ls-btn:hover { background:rgba(201,168,76,.12); border-color:var(--gold); }
+  .ls-final-banner { display:none; text-align:center; padding:18px 24px; background:linear-gradient(135deg,rgba(201,168,76,.2),rgba(201,168,76,.06)); border-bottom:3px solid var(--gold); }
+  .ls-final-title  { font-family:'Cinzel',serif; font-size:clamp(1.1rem,4vw,2rem); font-weight:900; color:var(--gold-light); letter-spacing:.2em; text-shadow:0 0 30px rgba(201,168,76,.5); }
+  .ls-final-sub    { font-family:'Cinzel',serif; font-size:.7rem; letter-spacing:.24em; color:var(--gold-dim); margin-top:5px; }
+  .ls-board { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; padding:20px; max-width:920px; margin:0 auto; }
+  @media(max-width:640px){ .ls-board { grid-template-columns:1fr; } }
+  .ls-team-card { border-radius:8px; overflow:hidden; border:2px solid var(--ls-dim,var(--border)); background:var(--bg-card); }
+  .ls-team-head { display:flex; align-items:center; gap:10px; padding:14px 16px 10px; background:linear-gradient(135deg,#02030a,var(--bg-panel)); border-bottom:1px solid var(--ls-dim,var(--border)); }
+  .ls-team-medal { font-size:1.5rem; flex-shrink:0; line-height:1; }
+  .ls-team-name  { font-family:'Cinzel',serif; font-size:.88rem; font-weight:900; letter-spacing:.07em; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .ls-team-score { font-family:'Cinzel',serif; font-size:1.4rem; font-weight:900; font-variant-numeric:tabular-nums; flex-shrink:0; }
+  .ls-team-sub   { font-family:'Cinzel',serif; font-size:.56rem; letter-spacing:.12em; color:var(--text-muted); padding:3px 16px; background:var(--bg-dark); border-bottom:1px solid var(--border); text-transform:uppercase; }
+  .ls-players { display:flex; flex-direction:column; }
+  .ls-player { display:grid; grid-template-columns:12px 28px 1fr auto auto; align-items:center; gap:7px; padding:5px 14px; border-bottom:1px solid var(--border); transition:background .12s; }
+  .ls-player:last-child { border-bottom:none; }
+  .ls-player:hover { background:rgba(201,168,76,.04); }
+  .ls-player.dim { opacity:.38; }
+  .ls-cdot      { width:7px; height:7px; border-radius:50%; }
+  .ls-cdot.on   { background:var(--ls-color,var(--green)); }
+  .ls-cdot.off  { background:var(--text-muted); }
+  .ls-ppos  { font-family:'Cinzel',serif; font-size:.66rem; font-weight:700; color:var(--text-muted); }
+  .ls-pname { font-size:.88rem; color:var(--text-main); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .ls-pchips{ font-size:.7rem; color:var(--text-dim); font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap; }
+  .ls-ppts  { font-family:'Cinzel',serif; font-size:.76rem; font-weight:700; font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap; min-width:52px; }
+  .ls-no-players { padding:14px 16px; color:var(--text-muted); font-style:italic; font-size:.82rem; text-align:center; }
+  .ls-empty { grid-column:1/-1; text-align:center; padding:60px 20px; color:var(--text-muted); font-style:italic; font-size:.92rem; }
+  .ls-err   { grid-column:1/-1; text-align:center; padding:40px 20px; color:var(--red); font-size:.88rem; }
+  body.light .ls-status-bar  { background:#FFFFFF; border-bottom-color:#BF9A30; }
+  body.light .ls-manual-bar  { background:#EAE4F5; border-bottom-color:#C0B0D8; }
+  body.light .ls-id-input    { background:#FFFFFF; color:#1A0A2E; border-color:#BF9A30; }
+  body.light .ls-btn         { color:#7A5500; border-color:#9A6A10; }
+  body.light .ls-btn:hover   { background:rgba(122,85,0,.08); }
+  body.light .ls-final-banner{ background:linear-gradient(135deg,rgba(122,85,0,.15),rgba(122,85,0,.04)); border-bottom-color:#7A5500; }
+  body.light .ls-team-card   { background:#FFFFFF; }
+  body.light .ls-team-head   { background:linear-gradient(135deg,#E8E0F5,#F3F0F8); }
+  body.light .ls-team-sub    { background:#EAE4F5; }
+  body.light .ls-player:hover{ background:rgba(122,85,0,.04); }
+  body.light .ls-pname       { color:#1A0A2E; }
+  .ls-mode-bar { display:flex; align-items:center; gap:10px; padding:9px 20px; background:var(--bg-dark); border-bottom:2px solid var(--border-gold); flex-wrap:wrap; }
+  .ls-mode-label { font-family:'Cinzel',serif; font-size:.68rem; letter-spacing:.18em; color:var(--text-muted); flex-shrink:0; }
+  .ls-mode-btn { font-family:'Cinzel',serif; font-size:.72rem; font-weight:700; letter-spacing:.1em; padding:7px 16px; border:1px solid var(--border); border-radius:20px; background:transparent; color:var(--text-dim); cursor:pointer; transition:all .2s; white-space:nowrap; }
+  .ls-mode-btn:hover { border-color:var(--gold-dim); color:var(--gold-dim); }
+  .ls-mode-btn.active { background:rgba(201,168,76,.13); border-color:var(--gold); color:var(--gold-light); box-shadow:0 0 10px rgba(201,168,76,.18); }
+  body.light .ls-mode-bar { background:#EAE4F5; border-bottom-color:#BF9A30; }
+  body.light .ls-mode-btn.active { background:rgba(122,85,0,.1); border-color:#7A5500; color:#5C3F00; }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
@@ -574,6 +636,7 @@
   <a class="tab-btn" href="https://docs.google.com/videos/d/1V2kSb1TIQOZS6RvPwgn9TwHxj3Qg7vfn2PdfP1lpBOQ/edit?usp=sharing" target="_blank" rel="noopener">🎬 MAIN LEADER BOARD VIDEO</a>
   <button class="tab-btn"        id="tab-calc"      onclick="switchTab('calc')">🧮 CALCULATOR</button>
   <button class="tab-btn"        id="tab-avatars"   onclick="switchTab('avatars')">🖼 AVATARS</button>
+  <button class="tab-btn"        id="tab-live"      onclick="switchTab('live')">🎯 LIVE SCORE</button>
 </div>
 
 <!-- CONTROLS (standings + players) -->
@@ -791,6 +854,47 @@
   </div>
 </div>
 
+<!-- ══ LIVE SCORE SECTION ══ -->
+<div id="section-live" style="display:none">
+  <div class="ls-section">
+
+    <!-- Mode toggle -->
+    <div class="ls-mode-bar">
+      <span class="ls-mode-label">MODE ▸</span>
+      <button class="ls-mode-btn active" id="lsModeBtnLive" onclick="setLsMode('live')">🔴 LIVE GAME</button>
+      <button class="ls-mode-btn"        id="lsModeBtnTest" onclick="setLsMode('test')">⏮ LAST GAME (TEST)</button>
+    </div>
+
+    <!-- Status bar -->
+    <div class="ls-status-bar">
+      <span class="ls-dot ls-dot-idle" id="lsStatusDot"></span>
+      <span class="ls-status-text" id="lsStatusText">Open this tab during a game to start live scoring</span>
+      <span class="ls-countdown-wrap" id="lsCountdownWrap" style="display:none">Next refresh in <strong id="lsCountdown">30</strong>s</span>
+      <span class="ls-updated" id="lsUpdated"></span>
+    </div>
+
+    <!-- Manual tournament ID override -->
+    <div class="ls-manual-bar">
+      <span class="ls-manual-label">TOURNAMENT ID</span>
+      <input type="text" id="lsTournId" class="ls-id-input" placeholder="e.g. 7489832">
+      <button class="ls-btn" id="lsStartBtn"  onclick="lsManualStart()">&#9654; START</button>
+      <button class="ls-btn" id="lsDetectBtn" onclick="detectAndStartLive()" style="margin-left:4px">&#8635; AUTO-DETECT</button>
+    </div>
+
+    <!-- Final banner — hidden until game ends -->
+    <div class="ls-final-banner" id="lsFinalBanner">
+      <div class="ls-final-title">✦ FINAL SCORE ✦</div>
+      <div class="ls-final-sub">Tournament Complete</div>
+    </div>
+
+    <!-- Team score cards -->
+    <div class="ls-board" id="lsBoard">
+      <div class="ls-empty">Auto-Detect will find today&rsquo;s active Grind automatically.<br>Or enter a tournament ID and tap Start.</div>
+    </div>
+
+  </div>
+</div>
+
 <footer>
   <span class="fr">✦ ♠ ♥ ♦ ♣ ✦</span>
   Midnight Grind &nbsp;·&nbsp; Leagues Invitational &nbsp;·&nbsp; Live data from Google Sheets
@@ -947,8 +1051,10 @@ function showError(msg) {
 
 // ── TAB SWITCHING ─────────────────────────────────────────────
 function switchTab(tab) {
+  // Stop live polling when navigating away from the live tab
+  if (activeTab === 'live' && tab !== 'live') stopLivePolling();
   activeTab = tab;
-  ['standings','players','leaders','latest','calendar','members','calc','avatars'].forEach(function(t) {
+  ['standings','players','leaders','latest','calendar','members','calc','avatars','live'].forEach(function(t) {
     document.getElementById('tab-'+t).classList.toggle('active', t === tab);
     document.getElementById('section-'+t).style.display = (t === tab) ? '' : 'none';
   });
@@ -961,6 +1067,7 @@ function switchTab(tab) {
   if (tab === 'calendar')  renderCalTab();
   if (tab === 'members')   renderMembers();
   if (tab === 'avatars')   renderAvatars();
+  if (tab === 'live')      initLiveTab();
 }
 
 // ── PERIOD BAR ────────────────────────────────────────────────
@@ -1322,6 +1429,7 @@ function stClass(status) {
   var s=(status||'').toLowerCase();
   return s==='running'?'st-running':s==='registering'?'st-registering':s==='finished'?'st-finished':'st-announced';
 }
+function fmt(n) { return (n||0).toLocaleString(); }
 function fmtTime(iso, tz, loc) {
   try { return new Intl.DateTimeFormat(loc||'en-US',{timeZone:tz,hour:'numeric',minute:'2-digit',hour12:true}).format(new Date(iso)); }
   catch(e){ return '?'; }
@@ -1595,6 +1703,207 @@ function captureTab() {
       if (btn) { btn.textContent = '\u26A0 FAILED'; setTimeout(function(){ btn.textContent = '\uD83D\uDCF7 COPY TO CLIPBOARD'; btn.disabled = false; }, 2000); }
       alert('Copy failed: ' + err.message + '\nTry a different browser or check clipboard permissions.');
     });
+}
+
+// ── LIVE SCORE ────────────────────────────────────────────────
+var liveIntervalId  = null;
+var liveTickId      = null;
+var liveCountdown   = 30;
+var liveTournId     = '';
+var liveIsFinal     = false;
+var lsMode          = 'live'; // 'live' | 'test'
+
+function setLsMode(mode) {
+  lsMode = mode;
+  document.getElementById('lsModeBtnLive').classList.toggle('active', mode === 'live');
+  document.getElementById('lsModeBtnTest').classList.toggle('active', mode === 'test');
+  // Stop any running poll and reset the board when switching modes
+  stopLivePolling();
+  liveIsFinal = false;
+  liveTournId = '';
+  document.getElementById('lsTournId').value = '';
+  document.getElementById('lsBoard').innerHTML = mode === 'test'
+    ? '<div class="ls-empty">Enter a completed tournament ID and tap Load to see final scores.</div>'
+    : '<div class="ls-empty">Auto-Detect finds today\u2019s active Grind automatically.<br>Or enter a tournament ID and tap Start.</div>';
+  // Update button labels
+  document.getElementById('lsStartBtn').textContent  = mode === 'test' ? '\u23EE Load' : '\u25B6 START';
+  document.getElementById('lsDetectBtn').style.display = mode === 'test' ? 'none' : '';
+  var cdWrap = document.getElementById('lsCountdownWrap');
+  if (cdWrap) cdWrap.style.display = 'none';
+  setLiveStatus('idle', mode === 'test'
+    ? 'Test mode \u2014 loads final results from a completed tournament'
+    : 'Open this tab during a game to start live scoring');
+}
+
+function initLiveTab() {
+  // If tournament already finished this session, just leave the final board up.
+  if (liveIsFinal) return;
+  // If a poll is already running (user switched away and back), restart the
+  // countdown display but don't re-detect — the interval is still ticking.
+  if (liveIntervalId) {
+    restartLiveTick();
+    return;
+  }
+  // In test mode don't auto-start anything
+  if (lsMode === 'test') return;
+  detectAndStartLive();
+}
+
+function detectAndStartLive() {
+  setLiveStatus('detecting', 'Searching for today\u2019s active game\u2026');
+  fetch(WEBAPP_URL + '?get=liveDetect')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data && data.id) {
+        liveTournId = String(data.id);
+        document.getElementById('lsTournId').value = liveTournId;
+        startLivePolling(liveTournId);
+      } else {
+        setLiveStatus('idle', 'No active game detected \u2014 enter a tournament ID or check back later');
+      }
+    })
+    .catch(function() {
+      setLiveStatus('idle', 'Auto-detect failed \u2014 enter tournament ID manually');
+    });
+}
+
+function lsManualStart() {
+  var id = (document.getElementById('lsTournId').value || '').trim();
+  if (!id) { alert('Enter a tournament ID first'); return; }
+  liveIsFinal = false;
+  if (lsMode === 'test') {
+    // Test mode: fetch once from the completed-game endpoint, no polling
+    liveTournId = id;
+    setLiveStatus('detecting', 'Loading final results\u2026');
+    fetchLiveScore(id);
+  } else {
+    startLivePolling(id);
+  }
+}
+
+function startLivePolling(id) {
+  stopLivePolling();
+  liveTournId  = id;
+  liveIsFinal  = false;
+  liveCountdown = 30;
+  fetchLiveScore(id);
+  liveIntervalId = setInterval(function() {
+    if (activeTab !== 'live') return;
+    fetchLiveScore(liveTournId);
+  }, 30000);
+  restartLiveTick();
+}
+
+function restartLiveTick() {
+  if (liveTickId) { clearInterval(liveTickId); liveTickId = null; }
+  liveCountdown = 30;
+  liveTickId = setInterval(function() {
+    if (activeTab !== 'live') return;
+    liveCountdown = Math.max(0, liveCountdown - 1);
+    var el = document.getElementById('lsCountdown');
+    if (el) el.textContent = liveCountdown;
+    if (liveCountdown === 0) liveCountdown = 30; // reset after fetch fires
+  }, 1000);
+}
+
+function stopLivePolling() {
+  if (liveIntervalId) { clearInterval(liveIntervalId); liveIntervalId = null; }
+  if (liveTickId)     { clearInterval(liveTickId);     liveTickId     = null; }
+}
+
+function fetchLiveScore(id) {
+  liveCountdown = 30;
+  var endpoint = lsMode === 'test' ? 'lastgame' : 'live';
+  fetch(WEBAPP_URL + '?get=' + endpoint + '&id=' + encodeURIComponent(id))
+    .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function(data) {
+      if (data.error) throw new Error(data.error);
+      renderLiveScore(data);
+    })
+    .catch(function(err) {
+      var el = document.getElementById('lsBoard');
+      if (el) el.innerHTML = '<div class="ls-err">Failed to load live data: ' + esc(err.message) + '</div>';
+      setLiveStatus('idle', 'Error \u2014 will retry in 30s');
+    });
+}
+
+function renderLiveScore(data) {
+  var remaining = data.numPlayers || 0;
+  var state     = (data.state || '').toLowerCase();
+  var isFinal   = remaining <= 1 || state === 'finished' || state === 'complete' || state === 'ended';
+
+  if (isFinal && !liveIsFinal) {
+    liveIsFinal = true;
+    stopLivePolling();
+  }
+
+  // Status + countdown
+  if (lsMode === 'test') {
+    var testLabel = (data.gameName || ('Tournament ' + data.tournamentId)) +
+                    (data.datePlayed ? '  \u00b7  ' + data.datePlayed : '') +
+                    '  \u00b7  ' + remaining + ' players';
+    setLiveStatus('final', testLabel);
+  } else if (isFinal) {
+    setLiveStatus('final', 'FINAL \u2014 Tournament complete');
+  } else {
+    setLiveStatus('live', remaining + ' players remaining \u00b7 Tournament ' + data.tournamentId);
+  }
+
+  // Timestamp
+  var updEl = document.getElementById('lsUpdated');
+  if (updEl && data.updated) {
+    try { updEl.textContent = 'Updated ' + new Date(data.updated).toLocaleTimeString(); } catch(e) {}
+  }
+
+  var board = document.getElementById('lsBoard');
+  if (!board) return;
+
+  if (!data.teams || !data.teams.length) {
+    board.innerHTML = '<div class="ls-empty">No MG team members found in this tournament.</div>';
+    return;
+  }
+
+  var medals = ['\uD83E\uDD47','\uD83E\uDD48','\uD83E\uDD49','4\uFE0F\u20E3'];
+
+  board.innerHTML = data.teams.map(function(team, idx) {
+    var playersHtml = '';
+    if (team.players && team.players.length) {
+      playersHtml = team.players.map(function(p) {
+        var dim   = p.counting ? '' : ' dim';
+        var dotCls = p.counting ? 'on' : 'off';
+        return '<div class="ls-player' + dim + '">' +
+          '<span class="ls-cdot ' + dotCls + '"></span>' +
+          '<span class="ls-ppos">#' + p.pos + '</span>' +
+          '<span class="ls-pname">' + esc(p.username) + '</span>' +
+          '<span class="ls-pchips">' + fmt(p.chips) + '</span>' +
+          '<span class="ls-ppts" style="color:' + esc(team.color) + '">' + fmt(p.points) + '</span>' +
+        '</div>';
+      }).join('');
+    } else {
+      playersHtml = '<div class="ls-no-players">No members in this game</div>';
+    }
+
+    return '<div class="ls-team-card" style="--ls-color:' + esc(team.color) + ';--ls-dim:' + esc(team.colorDim) + ';border-color:' + esc(team.colorDim) + '">' +
+      '<div class="ls-team-head" style="border-bottom-color:' + esc(team.colorDim) + '">' +
+        '<span class="ls-team-medal">' + (medals[idx] || '') + '</span>' +
+        '<span class="ls-team-name"  style="color:' + esc(team.color) + '">' + esc(team.name) + '</span>' +
+        '<span class="ls-team-score" style="color:' + esc(team.color) + '">' + fmt(team.score) + '</span>' +
+      '</div>' +
+      '<div class="ls-team-sub">Top 5 scored &nbsp;\u00b7&nbsp; ' + (team.players ? team.players.length : 0) + ' members active</div>' +
+      '<div class="ls-players">' + playersHtml + '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function setLiveStatus(type, msg) {
+  var dot  = document.getElementById('lsStatusDot');
+  var text = document.getElementById('lsStatusText');
+  var cdEl = document.getElementById('lsCountdownWrap');
+  var bnr  = document.getElementById('lsFinalBanner');
+  if (dot)  { dot.className  = 'ls-dot ls-dot-' + type; }
+  if (text) { text.textContent = msg; }
+  if (cdEl) { cdEl.style.display = (type === 'live') ? '' : 'none'; }
+  if (bnr)  { bnr.style.display  = (type === 'final') ? '' : 'none'; }
 }
 
 // ── EVENTS ────────────────────────────────────────────────────
