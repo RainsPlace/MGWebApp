@@ -1890,7 +1890,7 @@ function fetchLiveScore(id) {
 }
 
 function renderLiveScore(data) {
-  var remaining = data.numPlayers || 0;
+  var remaining = (data.playersRemaining != null ? data.playersRemaining : data.numPlayers) || 0;
   var state     = (data.state || '').toLowerCase();
   var isFinal   = remaining <= 1 || state === 'finished' || state === 'complete' || state === 'ended';
 
