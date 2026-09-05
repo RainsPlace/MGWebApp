@@ -242,6 +242,61 @@
   .out-announce { padding:8px 16px; font-family:'Cinzel',serif; font-size:.78rem; color:var(--purple-light); text-align:center; letter-spacing:.03em; border-bottom:1px solid #0a0814; }
   .out-announce:nth-child(odd){background:#07040f}.out-announce:nth-child(even){background:#090618}
 
+  /* ── PRESENTATION RESULTS ── */
+  .pres-copy-row { display:flex; gap:10px; justify-content:center; margin-top:10px; flex-wrap:wrap; }
+  .pres-copy-btn { font-family:'Cinzel',serif; font-size:.78rem; font-weight:700; letter-spacing:.08em; padding:8px 20px; border:1px solid var(--purple-dim); border-radius:20px; background:transparent; color:var(--purple-light); cursor:pointer; transition:all .2s; }
+  .pres-copy-btn:hover { background:rgba(153,102,204,.14); border-color:var(--purple-light); }
+  .pres-copy-btn.copied { border-color:var(--green); color:var(--green); background:rgba(76,175,80,.1); }
+  body.light .pres-copy-btn { border-color:var(--purple-dim); color:var(--purple); }
+  body.light .pres-copy-btn:hover { background:rgba(80,48,160,.08); }
+  .pr-wrap { max-width:920px; margin:0 auto; padding:20px 16px 48px; }
+  .pr-team-banners { display:flex; justify-content:center; gap:10px; padding:16px 0 18px; flex-wrap:wrap; }
+  .pr-banner-wrap { display:flex; flex-direction:column; align-items:center; gap:6px; flex:1; min-width:110px; max-width:170px; }
+  .pr-banner-img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:8px; border:2px solid var(--border-gold); display:block; }
+  .pr-banner-name { font-family:'Cinzel',serif; font-size:.82rem; font-weight:900; letter-spacing:.2em; text-transform:uppercase; text-align:center; }
+  .pr-announce { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 16px; background:linear-gradient(135deg,#111120,#1c1c30); border:1px solid var(--border-gold); border-radius:6px; margin-bottom:14px; flex-wrap:wrap; }
+  .pr-announce-win { font-family:'Cinzel',serif; font-size:.9rem; font-weight:700; color:var(--gold-light); }
+  .pr-announce-congrats { font-family:'Cinzel',serif; font-size:.9rem; font-weight:900; color:var(--gold); letter-spacing:.04em; }
+  .pr-body { display:flex; gap:14px; align-items:flex-start; flex-wrap:wrap; }
+  .pr-left { flex:1.6; min-width:260px; }
+  .pr-right { flex:1; min-width:210px; display:flex; flex-direction:column; gap:10px; }
+  .pr-tbl-hdr { font-family:'Cinzel',serif; font-size:.68rem; font-weight:700; letter-spacing:.15em; color:var(--text-dim); text-align:center; padding:5px 10px; background:var(--bg-dark); border:1px solid var(--border-gold); border-bottom:none; text-transform:uppercase; border-radius:4px 4px 0 0; }
+  .pr-table { width:100%; border-collapse:collapse; font-size:.84rem; border:1px solid var(--border-gold); border-top:none; }
+  .pr-table thead tr { background:var(--bg-dark); }
+  .pr-table th { font-family:'Cinzel',serif; font-size:.62rem; font-weight:700; letter-spacing:.1em; color:var(--text-dim); text-transform:uppercase; padding:7px 9px; text-align:left; border-bottom:2px solid var(--border-gold); }
+  .pr-table th.r,.pr-td-pts { text-align:right; }
+  .pr-table tbody tr { border-bottom:1px solid var(--border); transition:background .1s; }
+  .pr-table tbody tr:nth-child(even){background:var(--bg-row-alt)}.pr-table tbody tr:nth-child(odd){background:var(--bg-row)}
+  .pr-table tbody tr:hover{background:rgba(201,168,76,.05)}
+  .pr-table tbody tr.r1{background:rgba(201,168,76,.09)!important;border-left:2px solid var(--gold)}
+  .pr-table tbody tr.r2{background:rgba(168,184,200,.06)!important;border-left:2px solid var(--silver)}
+  .pr-table tbody tr.r3{background:rgba(196,122,69,.06)!important;border-left:2px solid var(--bronze)}
+  .pr-td-rank { font-family:'Cinzel',serif; font-size:.76rem; font-weight:700; color:var(--text-muted); padding:6px 8px; width:32px; }
+  .r1 .pr-td-rank{color:var(--gold)}.r2 .pr-td-rank{color:var(--silver)}.r3 .pr-td-rank{color:var(--bronze)}
+  .pr-td-player { padding:6px 8px; color:var(--text-main); font-size:.88rem; }
+  .r1 .pr-td-player{color:var(--gold-light)}.r2 .pr-td-player{color:var(--silver)}.r3 .pr-td-player{color:var(--bronze)}
+  .pr-td-team { padding:6px 8px; font-size:.78rem; font-weight:600; }
+  .pr-td-pts { padding:6px 8px; font-weight:700; color:var(--gold-light); font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .pr-side-card { border:1px solid var(--border-gold); border-radius:6px; overflow:hidden; }
+  .pr-side-hdr { font-family:'Cinzel',serif; font-size:.68rem; font-weight:700; letter-spacing:.12em; color:var(--gold); text-transform:uppercase; padding:7px 10px; background:var(--bg-dark); border-bottom:1px solid var(--border-gold); text-align:center; }
+  .pr-side-tbl { width:100%; border-collapse:collapse; font-size:.8rem; }
+  .pr-side-tbl thead th { font-family:'Cinzel',serif; font-size:.58rem; letter-spacing:.08em; color:var(--text-muted); text-transform:uppercase; padding:4px 8px; background:var(--bg-panel); text-align:right; border-bottom:1px solid var(--border); }
+  .pr-side-tbl thead th:first-child { text-align:left; }
+  .pr-side-tbl tbody tr { border-bottom:1px solid var(--border); }
+  .pr-side-tbl tbody tr:last-child { border-bottom:none; }
+  .pr-side-tbl tbody tr:hover { background:rgba(201,168,76,.04); }
+  .pr-side-name { padding:5px 8px; color:var(--text-main); font-size:.8rem; text-align:left; }
+  .pr-side-rank { padding:5px 6px; color:var(--text-dim); font-family:'Cinzel',serif; font-size:.74rem; font-weight:700; text-align:right; white-space:nowrap; }
+  .pr-side-pts { padding:5px 8px; color:var(--gold-light); font-weight:700; font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap; }
+  .pr-side-tbl tbody tr.pr-total { border-top:2px solid var(--border-gold); }
+  .pr-side-tbl tbody tr.pr-total .pr-side-name,.pr-side-tbl tbody tr.pr-total .pr-side-pts { font-family:'Cinzel',serif; font-weight:900; color:var(--gold-light); }
+  .pr-game-date { font-family:'Cinzel',serif; font-size:.88rem; font-weight:700; color:var(--gold-light); text-align:center; padding:9px 14px; margin-top:8px; background:var(--bg-dark); border:1px solid var(--border-gold); border-radius:4px; letter-spacing:.12em; text-shadow:0 0 12px rgba(201,168,76,.25); }
+  .pr-great-game { font-family:'Cinzel',serif; font-size:1rem; font-weight:900; color:var(--gold-light); text-align:center; padding:18px; letter-spacing:.24em; text-shadow:0 0 20px rgba(201,168,76,.3); }
+  .pr-footer-bar { display:flex; justify-content:center; align-items:center; gap:14px; padding:8px 14px; background:var(--bg-dark); border:1px solid var(--border-gold); border-radius:6px; margin-top:4px; flex-wrap:wrap; }
+  .pr-footer-lbl { font-family:'Cinzel',serif; font-size:.7rem; font-weight:700; letter-spacing:.16em; color:var(--text-dim); text-transform:uppercase; }
+  .pr-footer-val { font-family:'Cinzel',serif; font-size:.9rem; font-weight:900; color:var(--gold-light); letter-spacing:.04em; }
+  @media(max-width:640px){ .pr-body{flex-direction:column} .pr-left,.pr-right{min-width:0;width:100%} }
+
   /* ── WINNER CARD ── */
   .lg-winner-wrap { padding:16px 16px 0; text-align:center; }
   .lg-winner-card { display:inline-block; background:linear-gradient(135deg,rgba(201,168,76,.18),rgba(201,168,76,.06)); border:2px solid var(--gold); border-radius:10px; padding:18px 32px; min-width:220px; }
@@ -695,6 +750,7 @@
   <button class="tab-btn"        id="tab-players"   onclick="switchTab('players')">♠ PLAYERS</button>
   <button class="tab-btn"        id="tab-leaders"   onclick="switchTab('leaders')">★ LEADERS</button>
   <button class="tab-btn active" id="tab-latest"    onclick="switchTab('latest')">🌙 LATEST GAME</button>
+  <button class="tab-btn"        id="tab-presresults" onclick="switchTab('presresults')">📋 PRESENTATION RESULTS</button>
   <button class="tab-btn"        id="tab-calendar"  onclick="switchTab('calendar')">📅 CALENDAR</button>
   <button class="tab-btn"        id="tab-members"   onclick="switchTab('members')">👥 MEMBERS</button>
   <a class="tab-btn" href="https://docs.google.com/videos/d/1V2kSb1TIQOZS6RvPwgn9TwHxj3Qg7vfn2PdfP1lpBOQ/edit?usp=sharing" target="_blank" rel="noopener">🎬 MAIN LEADER BOARD VIDEO</a>
@@ -783,6 +839,22 @@
     <div id="lg-winner"></div>
     <div id="lg-trophy"></div>
     <div class="lg-body" id="lg-body"></div>
+  </div>
+</div>
+
+<!-- ══ PRESENTATION RESULTS SECTION ══ -->
+<div id="section-presresults" style="display:none">
+  <div class="out-section">
+    <div class="out-header-wrap">
+      <div class="out-bar"></div>
+      <div class="out-main-title" id="pres-title">PRESENTATION RESULTS</div>
+      <div class="pres-copy-row">
+        <button class="pres-copy-btn" id="prescopyimgbtn" onclick="copyPresImage()">&#128248; Copy as Image</button>
+        <button class="pres-copy-btn" id="prescopybtn"    onclick="copyPresResults()">&#128203; Copy as Text</button>
+        <button class="pres-copy-btn" id="prescopyallbtn" onclick="copyPresEverything()">&#128640; Copy Everything Else</button>
+      </div>
+    </div>
+    <div class="out-scroll" id="pres-scroll"></div>
   </div>
 </div>
 
@@ -1331,20 +1403,21 @@ function switchTab(tab) {
   // Stop live polling when navigating away from the live tab
   if (activeTab === 'live' && tab !== 'live') stopLivePolling();
   activeTab = tab;
-  ['standings','players','leaders','latest','calendar','members','calc','avatars','live','leagueinfo'].forEach(function(t) {
+  ['standings','players','leaders','latest','presresults','calendar','members','calc','avatars','live','leagueinfo'].forEach(function(t) {
     document.getElementById('tab-'+t).classList.toggle('active', t === tab);
     document.getElementById('section-'+t).style.display = (t === tab) ? '' : 'none';
   });
   document.getElementById('ctrl-main').style.display   = (tab === 'standings' || tab === 'players') ? '' : 'none';
   document.getElementById('period-bar').style.display  = (tab === 'leaders') ? '' : 'none';
-  if (tab === 'standings') renderStandings();
-  if (tab === 'players')   renderPlayersTable();
-  if (tab === 'leaders')   renderLeaders();
-  if (tab === 'latest')    renderLatestGame();
-  if (tab === 'calendar')  renderCalTab();
-  if (tab === 'members')   renderMembers();
-  if (tab === 'avatars')   renderAvatars();
-  if (tab === 'live')      initLiveTab();
+  if (tab === 'standings')   renderStandings();
+  if (tab === 'players')     renderPlayersTable();
+  if (tab === 'leaders')     renderLeaders();
+  if (tab === 'latest')      renderLatestGame();
+  if (tab === 'presresults') renderPresResults();
+  if (tab === 'calendar')    renderCalTab();
+  if (tab === 'members')     renderMembers();
+  if (tab === 'avatars')     renderAvatars();
+  if (tab === 'live')        initLiveTab();
 }
 
 // ── PERIOD BAR ────────────────────────────────────────────────
@@ -1367,11 +1440,312 @@ function selectPeriod(p) {
 }
 
 function renderAll() {
-  if (activeTab === 'standings') renderStandings();
-  if (activeTab === 'players')   renderPlayersTable();
-  if (activeTab === 'leaders')   renderLeaders();
-  if (activeTab === 'latest')    renderLatestGame();
-  if (activeTab === 'members')   renderMembers();
+  if (activeTab === 'standings')   renderStandings();
+  if (activeTab === 'players')     renderPlayersTable();
+  if (activeTab === 'leaders')     renderLeaders();
+  if (activeTab === 'latest')      renderLatestGame();
+  if (activeTab === 'presresults') renderPresResults();
+  if (activeTab === 'members')     renderMembers();
+}
+
+// ── PRESENTATION RESULTS ──────────────────────────────────────
+
+function renderPresResults() {
+  var scrollEl = document.getElementById('pres-scroll');
+  var titleEl  = document.getElementById('pres-title');
+  titleEl.textContent = 'PRESENTATION RESULTS';
+
+  if (!LATEST_GAME) {
+    scrollEl.innerHTML = '<div style="padding:48px;text-align:center;color:var(--text-muted);font-style:italic">No results data — process the latest tournament first, then refresh.</div>';
+    return;
+  }
+
+  var ts     = (LATEST_GAME.teamScores || []).slice().sort(function(a,b){ return (b.points||0)-(a.points||0); });
+  var winner = ts.length ? ts[0].team : '';
+  var wShort = winner.replace('Midnight ','');
+
+  // Team banner images row — highlight the winner
+  var teamOrder = ['Midnight Maniacs','Midnight Rollers','Midnight Riders','Midnight Masters'];
+  var imgsHtml = teamOrder.map(function(tn) {
+    var meta   = TEAM_META[tn] || {};
+    var short  = tn.replace('Midnight ','').toUpperCase();
+    var border = (tn === winner) ? '3px solid var(--gold)' : '2px solid var(--border-gold)';
+    var shadow = (tn === winner) ? '0 0 14px rgba(201,168,76,.55)' : 'none';
+    return '<div class="pr-banner-wrap">' +
+      '<img class="pr-banner-img" src="' + esc(meta.avatar||'') + '" alt="' + esc(short) + '" style="border:' + border + ';box-shadow:' + shadow + '" onerror="this.style.display=\'none\'">' +
+      '<div class="pr-banner-name" style="color:' + esc(meta.color||'#888') + '">' + esc(short) + '</div>' +
+    '</div>';
+  }).join('');
+
+  var bannerHtml   = '<div class="pr-team-banners">' + imgsHtml + '</div>';
+  var announceHtml = '<div class="pr-announce">' +
+    '<span class="pr-announce-win">Today\'s Win goes to Team: <strong>' + esc(winner) + '</strong></span>' +
+    '<span class="pr-announce-congrats">Congratulations ' + esc(wShort) + '!</span>' +
+  '</div>';
+
+  // Player results table (left column)
+  var results = (LATEST_GAME.results || []).slice().sort(function(a,b){ return (a.rank||0)-(b.rank||0); });
+  var playerRows = results.map(function(p) {
+    var meta  = TEAM_META[p.team] || {};
+    var sTeam = (p.team||'').replace('Midnight ','');
+    var rnk   = Number(p.rank)||0;
+    var cls   = rnk===1?'r1':rnk===2?'r2':rnk===3?'r3':'';
+    return '<tr class="' + cls + '">' +
+      '<td class="pr-td-rank">' + esc(p.rank) + '</td>' +
+      '<td class="pr-td-player">' + esc(p.player) + '</td>' +
+      '<td class="pr-td-team" style="color:' + esc(meta.color||'#888') + '">' + esc(sTeam) + '</td>' +
+      '<td class="pr-td-pts">' + Number(p.points).toLocaleString() + '</td>' +
+    '</tr>';
+  }).join('');
+
+  var leftHtml = '<div class="pr-tbl-hdr">Best 5 &middot; Top 20</div>' +
+    '<table class="pr-table">' +
+    '<thead><tr><th>Rank</th><th>Player</th><th>Team</th><th class="r">Points</th></tr></thead>' +
+    '<tbody>' + (playerRows || '<tr><td colspan="4" style="text-align:center;padding:12px;color:var(--text-muted)">No results yet</td></tr>') + '</tbody>' +
+    '</table>';
+  if (LATEST_GAME.date || LATEST_GAME.name) {
+    leftHtml += '<div class="pr-game-date">' + esc([LATEST_GAME.name, LATEST_GAME.date].filter(Boolean).join(' · ')) + '</div>';
+  }
+
+  // Tonight's game scores (right — top card)
+  var tonightRows = ts.map(function(t, i) {
+    var tMeta = TEAM_META[t.team] || {};
+    var sTeam = (t.team||'').replace('Midnight ','');
+    return '<tr>' +
+      '<td class="pr-side-name" style="color:' + esc(tMeta.color||'#888') + '">' + esc(sTeam) + '</td>' +
+      '<td class="pr-side-rank">' + (i+1) + '</td>' +
+      '<td class="pr-side-pts">' + Number(t.points).toLocaleString() + '</td>' +
+    '</tr>';
+  }).join('');
+  var tonightHtml = '<div class="pr-side-card">' +
+    '<div class="pr-side-hdr">Tonight\'s Game</div>' +
+    '<table class="pr-side-tbl"><thead><tr><th>Team</th><th>Rank</th><th>Score</th></tr></thead>' +
+    '<tbody>' + (tonightRows || '<tr><td colspan="3" style="padding:8px;text-align:center;color:var(--text-muted)">—</td></tr>') + '</tbody></table>' +
+  '</div>';
+
+  // Quarter standings (right — middle card)
+  var qSel   = document.getElementById('quarterSelect');
+  var q      = qSel ? qSel.value : (LATEST_GAME.quarter||'');
+  var qTeams = (DATA[q] && DATA[q].teams) ? DATA[q].teams : [];
+  var quarterHtml = '';
+  if (qTeams.length) {
+    var qRows = qTeams.map(function(t) {
+      var tMeta = TEAM_META[t.team] || {};
+      var sTeam = (t.team||'').replace('Midnight ','');
+      return '<tr><td class="pr-side-name" style="color:' + esc(tMeta.color||'#888') + '">' + esc(sTeam) + '</td>' +
+        '<td class="pr-side-rank">' + esc(t.rank) + '</td>' +
+        '<td class="pr-side-pts">' + Number(t.points).toLocaleString() + '</td></tr>';
+    }).join('');
+    quarterHtml = '<div class="pr-side-card">' +
+      '<div class="pr-side-hdr">Quarter Score (' + esc(q) + ')</div>' +
+      '<table class="pr-side-tbl"><thead><tr><th>Team</th><th>Rank</th><th>Total Pts</th></tr></thead>' +
+      '<tbody>' + qRows + '</tbody></table>' +
+    '</div>';
+  }
+
+  // Attendance (right — bottom card)
+  var attHtml = '';
+  if (ts.length) {
+    var total   = ts.reduce(function(s,t){ return s+(t.players||0); }, 0);
+    var attRows = ts.map(function(t) {
+      var tMeta = TEAM_META[t.team] || {};
+      var sTeam = (t.team||'').replace('Midnight ','');
+      return '<tr><td class="pr-side-name" style="color:' + esc(tMeta.color||'#888') + '">' + esc(sTeam) + '</td><td class="pr-side-pts">' + (t.players||0) + '</td></tr>';
+    }).join('');
+    attRows += '<tr class="pr-total"><td class="pr-side-name">Grand Total</td><td class="pr-side-pts">' + total + '</td></tr>';
+    attHtml = '<div class="pr-side-card">' +
+      '<div class="pr-side-hdr">Player Attendance</div>' +
+      '<table class="pr-side-tbl"><thead><tr><th>Team</th><th>Count</th></tr></thead>' +
+      '<tbody>' + attRows + '</tbody></table>' +
+    '</div>';
+  }
+
+  // Quarter leader footer bar
+  var footerHtml = '';
+  if (qTeams.length) {
+    footerHtml = '<div class="pr-footer-bar">' +
+      '<span class="pr-footer-lbl">Current Quarter Leader</span>' +
+      '<span class="pr-footer-val">' + esc(q) + ' &nbsp;&middot;&nbsp; ' + esc((qTeams[0].team||'').replace('Midnight ','')) + '</span>' +
+    '</div>';
+  }
+
+  scrollEl.innerHTML = '<div class="pr-wrap">' +
+    bannerHtml + announceHtml +
+    '<div class="pr-body">' +
+      '<div class="pr-left">'  + leftHtml    + '</div>' +
+      '<div class="pr-right">' + tonightHtml + quarterHtml + attHtml + '</div>' +
+    '</div>' +
+    '<div class="pr-great-game">Great Game Everyone!</div>' +
+    footerHtml +
+  '</div>';
+}
+
+function copyPresImage() {
+  var btn = document.getElementById('prescopyimgbtn');
+  if (!LATEST_GAME) {
+    if (btn) { btn.textContent = '⚠ No data'; setTimeout(function(){ btn.textContent = '📸 Copy as Image'; }, 2000); }
+    return;
+  }
+  if (typeof html2canvas === 'undefined') {
+    if (btn) { btn.textContent = '⚠ Not available'; setTimeout(function(){ btn.textContent = '📸 Copy as Image'; }, 2000); }
+    return;
+  }
+  if (btn) { btn.disabled = true; btn.textContent = 'Capturing…'; }
+
+  // Capture the inner pr-wrap (no scroll clip) with dark background
+  var wrap = document.querySelector('#pres-scroll .pr-wrap') || document.getElementById('pres-scroll');
+  html2canvas(wrap, {
+    backgroundColor: '#04060e',
+    scale: 2,
+    useCORS: true,
+    logging: false
+  }).then(function(canvas) {
+    canvas.toBlob(function(blob) {
+      if (!blob) {
+        if (btn) { btn.textContent = '⚠ Failed'; setTimeout(function(){ btn.textContent = '📸 Copy as Image'; btn.disabled = false; }, 2000); }
+        return;
+      }
+      navigator.clipboard.write([new ClipboardItem({'image/png': blob})]).then(function() {
+        if (btn) { btn.classList.add('copied'); btn.textContent = '✓ Copied!'; setTimeout(function(){ btn.classList.remove('copied'); btn.textContent = '📸 Copy as Image'; btn.disabled = false; }, 2200); }
+      }, function() {
+        if (btn) { btn.textContent = '⚠ Failed'; setTimeout(function(){ btn.textContent = '📸 Copy as Image'; btn.disabled = false; }, 2000); }
+      });
+    }, 'image/png');
+  }).catch(function() {
+    if (btn) { btn.textContent = '⚠ Error'; setTimeout(function(){ btn.textContent = '📸 Copy as Image'; btn.disabled = false; }, 2000); }
+  });
+}
+
+function copyPresResults() {
+  var btn = document.getElementById('prescopybtn');
+  if (!LATEST_GAME) {
+    if (btn) { btn.textContent = '⚠ No data'; setTimeout(function(){ btn.textContent = '📋 Copy as Text'; }, 2000); }
+    return;
+  }
+  if (btn) { btn.disabled = true; btn.textContent = 'Copying…'; }
+
+  var ts     = (LATEST_GAME.teamScores || []).slice().sort(function(a,b){ return (b.points||0)-(a.points||0); });
+  var winner = ts.length ? ts[0].team.replace('Midnight ','') : '';
+  var lines  = [];
+
+  if (LATEST_GAME.name) lines.push(LATEST_GAME.name.toUpperCase());
+  if (LATEST_GAME.date) lines.push(LATEST_GAME.date);
+  lines.push('');
+  if (winner) {
+    lines.push("Today's Win goes to Team: Midnight " + winner);
+    lines.push("Congratulations " + winner + "!");
+    lines.push('');
+  }
+
+  var results = (LATEST_GAME.results || []).slice().sort(function(a,b){ return (a.rank||0)-(b.rank||0); });
+  if (results.length) {
+    lines.push('BEST 5 · TOP 20');
+    lines.push(new Array(41).join('-'));
+    results.forEach(function(p) {
+      var rank  = ('   ' + p.rank).slice(-3);
+      var name  = (p.player + '                    ').slice(0,20);
+      var sTeam = ((p.team||'').replace('Midnight ','') + '          ').slice(0,10);
+      lines.push(rank + '  ' + name + sTeam + '  ' + Number(p.points).toLocaleString());
+    });
+    lines.push('');
+  }
+
+  if (ts.length) {
+    lines.push("TONIGHT'S GAME");
+    lines.push(new Array(31).join('-'));
+    ts.forEach(function(t, i) {
+      var sTeam = ((t.team||'').replace('Midnight ','') + '          ').slice(0,10);
+      lines.push((i+1) + '  ' + sTeam + '  ' + Number(t.points).toLocaleString() + (t.players ? '  (' + t.players + ' players)' : ''));
+    });
+    lines.push('');
+  }
+
+  var qSel   = document.getElementById('quarterSelect');
+  var q      = qSel ? qSel.value : '';
+  var qTeams = (DATA[q] && DATA[q].teams) ? DATA[q].teams : [];
+  if (qTeams.length) {
+    lines.push('QUARTER STANDINGS (' + q + ')');
+    lines.push(new Array(31).join('-'));
+    qTeams.forEach(function(t) {
+      var sTeam = ((t.team||'').replace('Midnight ','') + '          ').slice(0,10);
+      lines.push(t.rank + '  ' + sTeam + '  ' + Number(t.points).toLocaleString());
+    });
+    lines.push('');
+  }
+
+  lines.push('Great Game Everyone!');
+
+  navigator.clipboard.writeText(lines.join('\n')).then(function() {
+    if (btn) { btn.classList.add('copied'); btn.textContent = '✓ Copied!'; setTimeout(function(){ btn.classList.remove('copied'); btn.textContent = '📋 Copy as Text'; btn.disabled = false; }, 2200); }
+  }, function() {
+    if (btn) { btn.textContent = '⚠ Failed'; setTimeout(function(){ btn.textContent = '📋 Copy as Text'; btn.disabled = false; }, 2000); }
+  });
+}
+
+function copyPresEverything() {
+  var btn = document.getElementById('prescopyallbtn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Copying…'; }
+
+  var LB_URL  = 'https://docs.google.com/spreadsheets/d/1T6rjwont2RfZ2PQY4D6ejgocLeN3WqNH7HYH5jsdpm8/edit?gid=2112906447#gid=2112906447';
+  var LB_TEXT = 'Midnight Grind Leaderboard';
+  var WA_URL  = 'https://rainsplace.github.io/MGWebApp/';
+  var WA_TEXT = 'Midnight Grind Leaderboard WebApp';
+
+  // Final Table: top-9 finishers only (actual final table seats)
+  var finalTable = '';
+  if (LATEST_GAME && LATEST_GAME.results && LATEST_GAME.results.length) {
+    finalTable = LATEST_GAME.results
+      .filter(function(p){ return (p.rank||99) <= 9; })
+      .sort(function(a,b){ return (a.rank||0)-(b.rank||0); })
+      .map(function(p){ return '@' + p.player; }).join(', ');
+  }
+
+  // Next upcoming grind tournament
+  var nextTourney = null;
+  var now = new Date();
+  if (TOURNAMENTS && TOURNAMENTS.length) {
+    for (var i = 0; i < TOURNAMENTS.length; i++) {
+      var t = TOURNAMENTS[i];
+      if ((t.status === 'announced' || t.status === 'registering') && new Date(t.start) > now) {
+        nextTourney = t;
+        break;
+      }
+    }
+  }
+  var nextText = '', nextUrl = '';
+  if (nextTourney) {
+    nextText = nextTourney.name + ' at 9PM EST: TID ' + nextTourney.id;
+    nextUrl  = nextTourney.link || ('https://www.casino.org/replaypoker/tournaments/' + nextTourney.id);
+  }
+
+  var htmlStr = '<a href="' + esc(LB_URL) + '">' + esc(LB_TEXT) + '</a>' +
+                '<br><a href="' + esc(WA_URL) + '">' + esc(WA_TEXT) + '</a>';
+  var textStr = LB_TEXT + '\n' + LB_URL + '\n' + WA_TEXT + '\n' + WA_URL;
+
+  if (finalTable) {
+    htmlStr += '<br><br><b>Final Table</b><br>' + esc(finalTable);
+    textStr += '\n\nFinal Table\n' + finalTable;
+  }
+  if (nextText) {
+    htmlStr += '<br><br><b>Next Game Link</b><br><a href="' + esc(nextUrl) + '">' + esc(nextText) + '</a>';
+    textStr += '\n\nNext Game Link\n' + nextText;
+  }
+
+  var doFallback = function() {
+    navigator.clipboard.writeText(textStr).then(function() {
+      if (btn) { btn.classList.add('copied'); btn.textContent = '✓ Copied!'; setTimeout(function(){ btn.classList.remove('copied'); btn.textContent = '🚀 Copy Everything Else'; btn.disabled = false; }, 2000); }
+    });
+  };
+
+  try {
+    var data = [new ClipboardItem({
+      'text/html':  new Blob([htmlStr], {type:'text/html'}),
+      'text/plain': new Blob([textStr], {type:'text/plain'})
+    })];
+    navigator.clipboard.write(data).then(function() {
+      if (btn) { btn.classList.add('copied'); btn.textContent = '✓ Copied!'; setTimeout(function(){ btn.classList.remove('copied'); btn.textContent = '🚀 Copy Everything Else'; btn.disabled = false; }, 2000); }
+    }, doFallback);
+  } catch(e) { doFallback(); }
 }
 
 // ── MEMBERS ───────────────────────────────────────────────────
