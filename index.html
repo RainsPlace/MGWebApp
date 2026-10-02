@@ -442,6 +442,69 @@
   body.light #loadingScreen { background:#F3F0F8; }
   body.light #errorScreen   { background:#F3F0F8; }
   body.light .error-code    { background:#EAE4F5; border-color:#C0B0D8; }
+  /* ── CHAMPIONS TAB ── */
+  .mg-champ-wrap    { max-width:700px; margin:0 auto; padding:0 16px 40px; }
+  .mg-champ-section {
+    margin-bottom:44px; padding:22px 20px 18px; border-radius:12px;
+    background: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(80,50,140,.22) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 30% at 90% 90%, rgba(30,20,80,.3) 0%, transparent 60%),
+                var(--bg-card);
+    border:1px solid rgba(100,80,180,.35);
+    box-shadow: 0 0 0 1px rgba(201,168,76,.07), 0 4px 32px rgba(0,0,0,.5);
+    position:relative; overflow:hidden;
+  }
+  /* Star-field pseudo-element */
+  .mg-champ-section::before {
+    content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      radial-gradient(1.5px 1.5px at  8% 12%, rgba(255,255,255,.55) 0%, transparent 100%),
+      radial-gradient(1px   1px   at 22%  6%, rgba(255,255,255,.35) 0%, transparent 100%),
+      radial-gradient(2px   2px   at 38% 18%, rgba(201,168,76,.5)   0%, transparent 100%),
+      radial-gradient(1px   1px   at 52%  9%, rgba(255,255,255,.3)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 68% 14%, rgba(255,255,255,.45) 0%, transparent 100%),
+      radial-gradient(1px   1px   at 82%  5%, rgba(200,180,255,.4)  0%, transparent 100%),
+      radial-gradient(2px   2px   at 92% 22%, rgba(201,168,76,.35)  0%, transparent 100%),
+      radial-gradient(1px   1px   at 14% 72%, rgba(255,255,255,.25) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 28% 88%, rgba(200,180,255,.3)  0%, transparent 100%),
+      radial-gradient(1px   1px   at 46% 78%, rgba(255,255,255,.3)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 72% 82%, rgba(201,168,76,.3)   0%, transparent 100%),
+      radial-gradient(1px   1px   at 88% 68%, rgba(255,255,255,.35) 0%, transparent 100%),
+      radial-gradient(1px   1px   at  5% 42%, rgba(255,255,255,.2)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 95% 50%, rgba(200,180,255,.35) 0%, transparent 100%);
+  }
+  .mg-champ-section > * { position:relative; z-index:1; }
+  .mg-champ-qtitle {
+    font-family:'Cinzel',serif; font-size:1.25rem; font-weight:900; letter-spacing:.18em;
+    color:var(--gold-light); text-transform:uppercase; margin-bottom:18px;
+    padding-bottom:12px; text-align:center;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(90deg, transparent, var(--border-gold), var(--gold-dim), var(--border-gold), transparent) 1;
+    text-shadow: 0 0 30px rgba(201,168,76,.5), 0 2px 4px rgba(0,0,0,.8);
+    line-height: 1.5;
+  }
+  .mg-champ-winner  { display:flex; align-items:center; gap:16px; border:2px solid; border-radius:10px; padding:18px 20px; margin-bottom:14px; }
+  .mg-champ-winner-info { flex:1; min-width:0; }
+  .mg-champ-winner-crown { font-size:1.4rem; line-height:1; margin-bottom:3px; filter:drop-shadow(0 0 8px rgba(201,168,76,.7)); }
+  .mg-champ-winner-team  { font-family:'Cinzel',serif; font-size:1.05rem; font-weight:700; letter-spacing:.06em; text-shadow:0 0 16px currentColor; }
+  .mg-champ-winner-label { font-size:.6rem; font-weight:700; letter-spacing:.28em; color:var(--text-dim); text-transform:uppercase; margin:4px 0 8px; }
+  .mg-champ-winner-pts   { font-family:'Cinzel',serif; font-size:.9rem; color:var(--gold-light); letter-spacing:.04em; }
+  .mg-champ-awards  { display:flex; gap:12px; margin-bottom:14px; }
+  .mg-champ-award   { flex:1; background:rgba(8,12,28,.7); border:1px solid rgba(100,80,180,.3); border-radius:8px; padding:14px 15px; backdrop-filter:blur(4px); }
+  .mg-champ-award-icon  { font-size:1.2rem; margin-bottom:6px; }
+  .mg-champ-award-type  { font-size:.6rem; font-weight:700; letter-spacing:.22em; color:var(--text-dim); text-transform:uppercase; margin-bottom:4px; }
+  .mg-champ-award-name  { font-family:'Cinzel',serif; font-size:.84rem; font-weight:700; color:var(--gold-light); margin-bottom:2px; word-break:break-word; }
+  .mg-champ-award-team  { font-size:.68rem; margin-bottom:5px; }
+  .mg-champ-award-score { font-size:.8rem; color:var(--text-main); }
+  .mg-champ-score-hdr   { font-family:'Cinzel',serif; font-size:.62rem; font-weight:700; letter-spacing:.24em; color:var(--text-dim); text-transform:uppercase; text-align:center; margin-bottom:9px; }
+  .mg-champ-team-row    { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:14px; }
+  .mg-champ-team-card   { background:rgba(8,12,28,.7); border:1px solid; border-radius:8px; padding:12px 8px; text-align:center; backdrop-filter:blur(4px); }
+  .mg-champ-team-label  { font-size:.58rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; margin-bottom:6px; line-height:1.35; }
+  .mg-champ-team-player { font-family:'Cinzel',serif; font-size:.68rem; font-weight:600; color:var(--text-main); margin-bottom:3px; word-break:break-word; line-height:1.3; }
+  .mg-champ-team-pts    { font-size:.67rem; color:var(--gold-dim); }
+  .mg-champ-copy-btn    { background:transparent; color:var(--text-dim); border:1px solid rgba(100,80,180,.35); border-radius:4px; padding:5px 14px; font-family:'Cinzel',serif; font-size:.62rem; letter-spacing:.1em; cursor:pointer; transition:all .2s; }
+  .mg-champ-copy-btn:hover { color:var(--gold); border-color:var(--gold-dim); }
+  @media (max-width:520px) { .mg-champ-awards { flex-direction:column; } .mg-champ-team-row { grid-template-columns:repeat(2,1fr); } }
+
   body.light .tab-nav { background:#F3F0F8; border-right-color:#BF9A30; border-bottom:none; }
   body.light .tab-btn { background:transparent; border-color:transparent; }
   body.light .tab-btn.active { color:#5C3F00; border-color:#7A5500; background:rgba(122,85,0,.09); }
@@ -751,6 +814,7 @@
   <button class="tab-btn"        id="tab-leaders"   onclick="switchTab('leaders')">★ LEADERS</button>
   <button class="tab-btn active" id="tab-latest"    onclick="switchTab('latest')">🌙 LATEST GAME</button>
   <button class="tab-btn"        id="tab-presresults" onclick="switchTab('presresults')">📋 PRESENTATION RESULTS</button>
+  <button class="tab-btn"        id="tab-champions"  onclick="switchTab('champions')">🏆 CHAMPIONS</button>
   <button class="tab-btn"        id="tab-calendar"  onclick="switchTab('calendar')">📅 CALENDAR</button>
   <button class="tab-btn"        id="tab-members"   onclick="switchTab('members')">👥 MEMBERS</button>
   <a class="tab-btn" href="https://docs.google.com/videos/d/1V2kSb1TIQOZS6RvPwgn9TwHxj3Qg7vfn2PdfP1lpBOQ/edit?usp=sharing" target="_blank" rel="noopener">🎬 MAIN LEADER BOARD VIDEO</a>
@@ -1040,6 +1104,13 @@
 </div>
 
 <!-- ══ LEAGUE INFORMATION SECTION ══ -->
+<div id="section-champions" style="display:none">
+  <div style="padding:28px 0 0;">
+    <div style="font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.3em;color:var(--text-dim);text-transform:uppercase;text-align:center;margin-bottom:24px;">Quarter Champions</div>
+    <div id="champ-content"><div style="padding:40px;text-align:center;color:var(--text-dim);font-style:italic;">Loading…</div></div>
+  </div>
+</div><!-- end section-champions -->
+
 <div id="section-leagueinfo" style="display:none">
 <div class="li-wrap">
 
@@ -1302,9 +1373,15 @@ var calLoc    = 'en-US';
 var calTZKey  = 'newyork';
 
 // Cache keys
-var LS_DATA  = 'mg_lb_data_v1';
-var LS_STATS = 'mg_lb_stats_v1';
-var LS_GEN   = 'mg_lb_gen_v1';
+var LS_DATA      = 'mg_lb_data_v1';
+var LS_STATS     = 'mg_lb_stats_v1';
+var LS_GEN       = 'mg_lb_gen_v1';
+var LS_CHAMP     = 'mg_champ_v1';
+var LS_CHAMP_GEN = 'mg_champ_gen_v1';
+
+// Champions state
+var CHAMPIONS_DATA  = null;
+var championsLoaded = false;
 
 // ── FORMAT HELPERS ─────────────────────────────────────────────
 function n(v)    { return (!v && v !== 0) ? '—' : Number(v).toLocaleString(); }
@@ -1318,7 +1395,12 @@ function cellN(grid,r,c) { var v=parseFloat((cell(grid,r,c)||'').replace(/,/g,''
 
 // ── LOAD DATA ─────────────────────────────────────────────────
 function loadData(force) {
-  if (force) { fetchFresh(false); return; }
+  if (force) {
+    try { localStorage.removeItem(LS_CHAMP); localStorage.removeItem(LS_CHAMP_GEN); } catch(e) {}
+    CHAMPIONS_DATA = null; championsLoaded = false;
+    fetchFresh(false);
+    return;
+  }
   try {
     var cached = localStorage.getItem(LS_DATA);
     var gen    = localStorage.getItem(LS_GEN);
@@ -1403,7 +1485,7 @@ function switchTab(tab) {
   // Stop live polling when navigating away from the live tab
   if (activeTab === 'live' && tab !== 'live') stopLivePolling();
   activeTab = tab;
-  ['standings','players','leaders','latest','presresults','calendar','members','calc','avatars','live','leagueinfo'].forEach(function(t) {
+  ['standings','players','leaders','latest','presresults','champions','calendar','members','calc','avatars','live','leagueinfo'].forEach(function(t) {
     document.getElementById('tab-'+t).classList.toggle('active', t === tab);
     document.getElementById('section-'+t).style.display = (t === tab) ? '' : 'none';
   });
@@ -1414,6 +1496,7 @@ function switchTab(tab) {
   if (tab === 'leaders')     renderLeaders();
   if (tab === 'latest')      renderLatestGame();
   if (tab === 'presresults') renderPresResults();
+  if (tab === 'champions')   loadChampions();
   if (tab === 'calendar')    renderCalTab();
   if (tab === 'members')     renderMembers();
   if (tab === 'avatars')     renderAvatars();
@@ -2638,6 +2721,156 @@ document.getElementById('quarterSelect').addEventListener('change', renderAll);
 // ── START ─────────────────────────────────────────────────────
 initCalc();
 loadData(false);
+
+// ── CHAMPIONS ─────────────────────────────────────────────────
+function loadChampions() {
+  if (championsLoaded && CHAMPIONS_DATA) { renderChampions(CHAMPIONS_DATA); return; }
+  try {
+    var cached = localStorage.getItem(LS_CHAMP);
+    var gen    = localStorage.getItem(LS_CHAMP_GEN);
+    if (cached && gen && (Date.now() - new Date(gen).getTime()) < 30*60*1000) {
+      CHAMPIONS_DATA = JSON.parse(cached);
+      championsLoaded = true;
+      renderChampions(CHAMPIONS_DATA);
+      return;
+    }
+  } catch(e) {}
+  fetchChampionsFromServer();
+}
+
+function fetchChampionsFromServer() {
+  document.getElementById('champ-content').innerHTML = '<div style="padding:40px;text-align:center;color:var(--text-dim);font-style:italic;">Loading champions…</div>';
+  if (typeof google !== 'undefined' && google.script && google.script.run) {
+    google.script.run
+      .withSuccessHandler(function(data) {
+        CHAMPIONS_DATA = data; championsLoaded = true;
+        try { localStorage.setItem(LS_CHAMP, JSON.stringify(data)); localStorage.setItem(LS_CHAMP_GEN, new Date().toISOString()); } catch(e) {}
+        renderChampions(data);
+      })
+      .withFailureHandler(function(err) {
+        document.getElementById('champ-content').innerHTML = '<div style="padding:40px;text-align:center;color:var(--red);">Failed to load champions: ' + esc(String(err.message||err)) + '</div>';
+      })
+      .mgGetChampionsForClient();
+  } else {
+    fetch(WEBAPP_URL + '?get=champions&_=' + Date.now())
+      .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+      .then(function(data) {
+        CHAMPIONS_DATA = data; championsLoaded = true;
+        try { localStorage.setItem(LS_CHAMP, JSON.stringify(data)); localStorage.setItem(LS_CHAMP_GEN, new Date().toISOString()); } catch(e) {}
+        renderChampions(data);
+      })
+      .catch(function(err) {
+        document.getElementById('champ-content').innerHTML = '<div style="padding:40px;text-align:center;color:var(--red);">Failed to load champions.</div>';
+      });
+  }
+}
+
+function renderChampions(data) {
+  var el = document.getElementById('champ-content');
+  var quarters = (data && data.quarters) || [];
+  if (!quarters.length) {
+    el.innerHTML = '<div style="padding:40px;text-align:center;color:var(--text-dim);">No champions data yet.<br><br>In the spreadsheet, run <strong>Editor Tasks → 🏆 Close Quarter / Crown Champions</strong>, then <strong>Force Refresh Web App Cache</strong>.</div>';
+    return;
+  }
+
+  var html = '<div class="mg-champ-wrap">';
+  quarters.forEach(function(q) {
+    var qid  = 'champ-' + q.quarter.replace(/\s+/g,'-').toLowerCase();
+    var tc   = q.teamColor || '#888';
+    var tcdim = q.teamColorDim || '#444';
+    var tcRgb = hexRgb_(tc);
+    var bgGrad = 'linear-gradient(135deg,rgba('+tcRgb+',.12) 0%,rgba(50,30,90,.15) 50%,rgba('+tcRgb+',.04) 100%)';
+
+    html += '<div class="mg-champ-section" id="' + qid + '">';
+    html += '<div class="mg-champ-qtitle">🌙 &nbsp;' + esc(q.quarter) + '&nbsp; 🌙<br><span style="font-size:.7em;letter-spacing:.35em;color:var(--gold-dim);">✦ &nbsp; Champions &nbsp; ✦</span></div>';
+
+    // Team champion banner
+    html += '<div class="mg-champ-winner" style="border-color:' + tc + ';background:' + bgGrad + ';box-shadow:0 0 20px rgba('+tcRgb+',.18),inset 0 0 0 1px rgba('+tcRgb+',.1)">';
+    html += teamAvatar(q.teamChampion, '56px');
+    html += '<div class="mg-champ-winner-info">';
+    html += '<div class="mg-champ-winner-crown">👑</div>';
+    html += '<div class="mg-champ-winner-team" style="color:' + tc + '">' + esc(q.teamChampion) + '</div>';
+    html += '<div class="mg-champ-winner-label">Quarter Champions</div>';
+    html += '<div class="mg-champ-winner-pts">' + Number(q.teamPoints).toLocaleString() + ' pts</div>';
+    html += '</div></div>';
+
+    // Individual awards
+    html += '<div class="mg-champ-awards">';
+    if (q.mvp) {
+      html += '<div class="mg-champ-award">';
+      html += '<div class="mg-champ-award-icon">⭐</div>';
+      html += '<div class="mg-champ-award-type">MVP</div>';
+      html += '<div class="mg-champ-award-name">' + esc(q.mvp) + '</div>';
+      if (q.mvpTeam) html += '<div class="mg-champ-award-team" style="color:' + (q.mvpTeamColor||'var(--text-dim)') + '">' + esc(q.mvpTeam) + '</div>';
+      html += '<div class="mg-champ-award-score">' + Number(q.mvpPoints).toLocaleString() + ' pts</div>';
+      html += '</div>';
+    }
+    if (q.mostWins) {
+      html += '<div class="mg-champ-award">';
+      html += '<div class="mg-champ-award-icon">🎯</div>';
+      html += '<div class="mg-champ-award-type">Most Wins</div>';
+      html += '<div class="mg-champ-award-name">' + esc(q.mostWins) + '</div>';
+      if (q.mostWinsTeam) html += '<div class="mg-champ-award-team" style="color:' + (q.mostWinsTeamColor||'var(--text-dim)') + '">' + esc(q.mostWinsTeam) + '</div>';
+      html += '<div class="mg-champ-award-score">' + q.winCount + (q.winCount===1?' win':' wins') + '</div>';
+      html += '</div>';
+    }
+    html += '</div>';
+
+    // Top player per team
+    var anyTeam = (q.topByTeam||[]).some(function(t){ return t.player; });
+    if (anyTeam) {
+      html += '<div class="mg-champ-score-hdr">⭐ &nbsp; Highest Score Per Team &nbsp; ⭐</div>';
+      html += '<div class="mg-champ-team-row">';
+      (q.topByTeam||[]).forEach(function(tb) {
+        if (!tb.player) return;
+        html += '<div class="mg-champ-team-card" style="border-color:' + (tb.color||'var(--border)') + '">';
+        html += '<div class="mg-champ-team-label" style="color:' + (tb.color||'var(--text-dim)') + '">' + esc(tb.team) + '</div>';
+        html += '<div class="mg-champ-team-player">' + esc(tb.player) + '</div>';
+        html += '<div class="mg-champ-team-pts">' + Number(tb.points).toLocaleString() + ' pts</div>';
+        html += '</div>';
+      });
+      html += '</div>';
+    }
+
+    html += '<div style="text-align:right;margin-top:6px">';
+    html += '<button class="mg-champ-copy-btn" onclick="mgCopyChampSection(this,\'' + qid + '\')">📷 Copy</button>';
+    html += '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+function hexRgb_(hex) {
+  hex = (hex||'#888888').replace('#','');
+  if (hex.length===3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+  return parseInt(hex.slice(0,2),16)+','+parseInt(hex.slice(2,4),16)+','+parseInt(hex.slice(4,6),16);
+}
+
+function mgCopyChampSection(btn, id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var orig = btn.textContent;
+  btn.textContent = '⏳ Copying…'; btn.disabled = true;
+  html2canvas(el, { backgroundColor: '#080c1c', scale: 2, useCORS: true, logging: false })
+    .then(function(canvas) {
+      return new Promise(function(res,rej) {
+        canvas.toBlob(function(blob) {
+          if (!blob) { rej(new Error('toBlob failed')); return; }
+          navigator.clipboard.write([new ClipboardItem({'image/png':blob})]).then(res).catch(rej);
+        }, 'image/png');
+      });
+    })
+    .then(function() {
+      btn.textContent = '✓ Copied!';
+      setTimeout(function(){ btn.textContent=orig; btn.disabled=false; }, 2000);
+    })
+    .catch(function(err) {
+      btn.textContent = '⚠ Failed';
+      setTimeout(function(){ btn.textContent=orig; btn.disabled=false; }, 2000);
+      console.error('mgCopyChampSection:', err);
+    });
+}
 </script>
 </body>
 </html>
