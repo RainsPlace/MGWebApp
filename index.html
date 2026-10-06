@@ -2722,6 +2722,16 @@ document.getElementById('quarterSelect').addEventListener('change', renderAll);
 initCalc();
 loadData(false);
 
+(function(){
+  fetch(WEBAPP_URL + '?get=pageview')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var el = document.getElementById('mgPvCount');
+      if (el && d && d.count) el.textContent = Number(d.count).toLocaleString();
+    })
+    .catch(function(){});
+})();
+
 // ── CHAMPIONS ─────────────────────────────────────────────────
 function loadChampions() {
   if (championsLoaded && CHAMPIONS_DATA) { renderChampions(CHAMPIONS_DATA); return; }
@@ -2872,5 +2882,6 @@ function mgCopyChampSection(btn, id) {
     });
 }
 </script>
+<div id="mg-page-footer" style="text-align:center;padding:8px 0 12px;font-size:11px;color:#c9a84c;opacity:0.8">👁 PAGE VIEWS: <span id="mgPvCount">—</span></div>
 </body>
 </html>
