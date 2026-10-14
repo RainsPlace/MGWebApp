@@ -807,6 +807,7 @@
   <div class="error-title">FAILED TO LOAD DATA</div>
   <div class="error-msg">Could not reach the leaderboard server. Make sure the Apps Script web app is deployed with "Anyone" access and WEBAPP_URL is set correctly in this file.</div>
   <div class="error-code" id="errorDetail"></div>
+  <button type="button" onclick="location.reload()" style="margin-top:8px;padding:10px 28px;font-family:'Cinzel',serif;font-weight:700;letter-spacing:.12em;background:transparent;color:var(--gold);border:1px solid var(--gold);border-radius:4px;cursor:pointer;">↻ TRY AGAIN</button>
 </div>
 
 <!-- MAIN APP -->
@@ -1568,13 +1569,37 @@ function loadData(force) {
   fetchFresh(false);
 }
 
+// Fetch with a time limit and automatic retries, so a stalled request
+// (seen in some Chrome setups) can't leave the spinner going forever.
+var FETCH_TIMEOUT_MS = 12000;
+var FETCH_ATTEMPTS   = 3;
+function fetchWithRetry(makeUrl, quiet) {
+  var msgEl = document.querySelector('#loadingScreen .loading-msg');
+  function attempt(n) {
+    var ctrl  = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    var timer = setTimeout(function() { if (ctrl) ctrl.abort(); }, FETCH_TIMEOUT_MS);
+    return fetch(makeUrl(), ctrl ? { signal: ctrl.signal } : undefined)
+      .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function(json) { clearTimeout(timer); return json; })
+      .catch(function(err) {
+        clearTimeout(timer);
+        if (n >= FETCH_ATTEMPTS) {
+          throw (err && err.name === 'AbortError')
+            ? new Error('Server did not respond after ' + FETCH_ATTEMPTS + ' tries') : err;
+        }
+        if (!quiet && msgEl) msgEl.textContent = 'Server is slow, retrying (' + (n + 1) + ' of ' + FETCH_ATTEMPTS + ')…';
+        return new Promise(function(res) { setTimeout(res, 1000); }).then(function() { return attempt(n + 1); });
+      });
+  }
+  return attempt(1);
+}
+
 function fetchFresh(isBackground) {
   var b   = document.getElementById('refreshBtn');
   var url = WEBAPP_URL + '?_=' + Date.now();
   if (!isBackground && b) { b.classList.add('spinning'); b.disabled = true; }
 
-  fetch(url)
-    .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+  fetchWithRetry(function() { return WEBAPP_URL + '?_=' + Date.now(); }, isBackground)
     .then(function(json) {
       if (json.error) throw new Error(json.error);
       try { localStorage.setItem(LS_DATA, JSON.stringify(json)); localStorage.setItem(LS_GEN, json.updated || new Date().toISOString()); } catch(e) {}
