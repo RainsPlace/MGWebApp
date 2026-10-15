@@ -807,7 +807,6 @@
   <div class="error-title">FAILED TO LOAD DATA</div>
   <div class="error-msg">Could not reach the leaderboard server. Make sure the Apps Script web app is deployed with "Anyone" access and WEBAPP_URL is set correctly in this file.</div>
   <div class="error-code" id="errorDetail"></div>
-  <button type="button" onclick="location.reload()" style="margin-top:8px;padding:10px 28px;font-family:'Cinzel',serif;font-weight:700;letter-spacing:.12em;background:transparent;color:var(--gold);border:1px solid var(--gold);border-radius:4px;cursor:pointer;">↻ TRY AGAIN</button>
 </div>
 
 <!-- MAIN APP -->
@@ -1273,7 +1272,7 @@
       <div class="li-section-title">Weekly Schedule (EST)</div>
       <div class="li-schedule">
         <div class="li-sched-row"><span class="li-sched-day">Sunday</span><span class="li-sched-time">6:30 PM</span><span class="li-sched-game">High Roller Open <span class="li-sched-note">NL Hold'em · 250k entry</span></span></div>
-        <div class="li-sched-row"><span class="li-sched-day">Monday</span><span class="li-sched-time">7:00 PM</span><span class="li-sched-game">Big Ballerz <span class="li-sched-note">Omaha Hi/Lo · 250k entry</span></span></div>
+        <div class="li-sched-row"><span class="li-sched-day">Wednesday</span><span class="li-sched-time">7:00 PM</span><span class="li-sched-game">Big Ballerz <span class="li-sched-note">Omaha Hi/Lo · 250k entry</span></span></div>
       </div>
       <div class="li-section-title">Monthly Event</div>
       <div class="li-schedule">
@@ -1569,8 +1568,6 @@ function loadData(force) {
   fetchFresh(false);
 }
 
-// Fetch with a time limit and automatic retries, so a stalled request
-// (seen in some Chrome setups) can't leave the spinner going forever.
 var FETCH_TIMEOUT_MS = 12000;
 var FETCH_ATTEMPTS   = 3;
 function fetchWithRetry(makeUrl, quiet) {
